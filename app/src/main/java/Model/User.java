@@ -1,44 +1,44 @@
 package Model;
 
 public class User {
-    private String name;
-    private String family;
-    private String userName;
+    private String firstname;
+    private String lastname;
+    private String username;
     private String password;
 
-    public User(String name, String family, String userName, String password) {
-        this.name = name;
-        this.family = family;
-        this.userName = userName;
+    public User(String firstname, String lastname, String username, String password) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.username = username;
         this.password = password;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public String getFamily() {
-        return family;
+    public String getLastname() {
+        return lastname;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public void setFamily(String family) {
-        this.family = family;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setPassword(String password) {
