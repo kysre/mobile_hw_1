@@ -1,19 +1,19 @@
 package Model;
 
 public class Professor extends User {
-    private String nameOfTheUniversity;
+    private String universityName;
 
     public Professor(String name, String family, String userName, String password
-            , String nameOfTheUniversity) {
+            , String universityName) {
         super(name, family, userName, password);
-        this.nameOfTheUniversity = nameOfTheUniversity;
+        this.universityName = universityName;
     }
 
-    public String getNameOfTheUniversity() {
-        return nameOfTheUniversity;
+    public String getUniversityName() {
+        return universityName;
     }
 
-    public void setNameOfTheUniversity(String nameOfTheUniversity) {
-        this.nameOfTheUniversity = nameOfTheUniversity;
+    public void setUniversityName(String universityName) {
+        this.universityName = universityName;
     }
 }
