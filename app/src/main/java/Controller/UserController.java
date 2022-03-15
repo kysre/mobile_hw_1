@@ -16,6 +16,10 @@ public class UserController {
         new Student(firstName, lastName, username, password, studentId);
     }
 
+    public static boolean checkUsernameForRegister(String username) {
+        return User.getUsernameToUser().get(username) != null;
+    }
+
     public static boolean loginErrorHandler(String username, String password) {
         if (User.getUsernameToUser().get(username) != null) {
             if (User.getUsernameToUser().get(username).getPassword().equals(password)) {
