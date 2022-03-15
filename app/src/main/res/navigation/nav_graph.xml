@@ -37,4 +37,9 @@
             android:id="@+id/action_registerProfessor_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/registerStudent"
+        android:name="edu.sharif.hw_1.registerStudent"
+        android:label="fragment_register_student"
+        tools:layout="@layout/fragment_register_student" />
 </navigation>
