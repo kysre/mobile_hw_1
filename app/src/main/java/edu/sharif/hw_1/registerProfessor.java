@@ -84,9 +84,16 @@ public class registerProfessor extends Fragment {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UserController.addProfessor(firstName.getText().toString(), lastName.getText().toString(),
-                        university.getText().toString(), username.getText().toString()
-                        , password.getText().toString());
+                if(UserController.checkUsernameForRegister(username.getText().toString())) {
+                    UserController.addProfessor(firstName.getText().toString(), lastName.getText().toString(),
+                            university.getText().toString(), username.getText().toString()
+                            , password.getText().toString());
+                    Toast toast=Toast.makeText(getContext(),"register was successfully",
+                            Toast.LENGTH_SHORT);
+                }else{
+                    Toast toast=Toast.makeText(getContext(),"this username is already exist",
+                            Toast.LENGTH_SHORT);
+                }
             }
         });
 
