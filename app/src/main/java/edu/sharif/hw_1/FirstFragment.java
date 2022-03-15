@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -31,7 +32,7 @@ public class FirstFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        Button loginButton = view.findViewById(R.id.loginButton);
         Switch isProfessor = view.findViewById(R.id.isProfessor);
 
         binding.RegisterButton.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +45,14 @@ public class FirstFragment extends Fragment {
                     NavHostFragment.findNavController(FirstFragment.this).navigate(R.id.
                             action_FirstFragment_to_registerStudent);
                 }
+            }
+        });
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(FirstFragment.this).
+                navigate(R.id.action_FirstFragment_to_login);
             }
         });
     }
