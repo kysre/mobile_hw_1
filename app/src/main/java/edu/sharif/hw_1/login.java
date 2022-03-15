@@ -11,15 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import Controller.UserController;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link registerStudent#newInstance} factory method to
+ * Use the {@link login#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class registerStudent extends Fragment {
+public class login extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,7 +31,7 @@ public class registerStudent extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public registerStudent() {
+    public login() {
         // Required empty public constructor
     }
 
@@ -40,11 +41,11 @@ public class registerStudent extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment registerStudent.
+     * @return A new instance of fragment login.
      */
-    // TODO: Rename and change types and number of parameters
-    public static registerStudent newInstance(String param1, String param2) {
-        registerStudent fragment = new registerStudent();
+//     TODO: Rename and change types and number of parameters
+    public static login newInstance(String param1, String param2) {
+        login fragment = new login();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,26 +66,31 @@ public class registerStudent extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register_student, container, false);
+        return inflater.inflate(R.layout.fragment_login, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Button registerButton = view.findViewById(R.id.registerbuttonstudent);
-        TextView username = view.findViewById(R.id.usernamestudent);
-        TextView firstname = view.findViewById(R.id.firstnamestudent);
-        TextView lastname = view.findViewById(R.id.lastnamestudent);
-        TextView password = view.findViewById(R.id.passwordstudent);
-        TextView studentId = view.findViewById(R.id.studentid);
-        registerButton.setOnClickListener(new View.OnClickListener() {
+        Button loginButton = view.findViewById(R.id.loginforloginpage);
+        TextView username = view.findViewById(R.id.usernameforloginpage);
+        TextView password = view.findViewById(R.id.passwordforloginpage);
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UserController.addStudent(firstname.getText().toString(),lastname.getText().toString(),
-                        studentId.getText().toString(),username.getText().toString(),
-                        password.getText().toString());
+                if (UserController.loginErrorHandler(username.getText().toString(),
+                        password.getText().toString())) {
+                    Toast toast = Toast.makeText(getContext(),
+                            "login was successfully",Toast.LENGTH_SHORT);
+                    toast.show();
+                    //TODO : when the main menu was created,this function will be completed
+
+                }else {
+                    Toast toast = Toast.makeText(getContext(),
+                            "username or password was wrong",Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             }
         });
-
     }
 }

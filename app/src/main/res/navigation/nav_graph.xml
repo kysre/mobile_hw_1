@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_registerStudent"
             app:destination="@id/registerStudent" />
+        <action
+            android:id="@+id/action_FirstFragment_to_login"
+            app:destination="@id/login" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -45,4 +48,9 @@
         android:name="edu.sharif.hw_1.registerStudent"
         android:label="fragment_register_student"
         tools:layout="@layout/fragment_register_student" />
+    <fragment
+        android:id="@+id/login"
+        android:name="edu.sharif.hw_1.login"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
 </navigation>

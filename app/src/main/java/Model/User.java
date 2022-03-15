@@ -1,6 +1,9 @@
 package Model;
 
+import java.util.HashMap;
+
 public class User {
+    private static HashMap<String,User> usernameToUser=new HashMap<>();
     private String firstname;
     private String lastname;
     private String username;
@@ -11,6 +14,7 @@ public class User {
         this.lastname = lastname;
         this.username = username;
         this.password = password;
+        usernameToUser.put(username,this);
     }
 
     public String getFirstname() {
@@ -43,5 +47,9 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public static HashMap<String, User> getUsernameToUser() {
+        return usernameToUser;
     }
 }
