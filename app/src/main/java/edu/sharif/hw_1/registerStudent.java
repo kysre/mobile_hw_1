@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import Controller.UserController;
 
@@ -80,9 +81,21 @@ public class registerStudent extends Fragment {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UserController.addStudent(firstname.getText().toString(),lastname.getText().toString(),
-                        studentId.getText().toString(),username.getText().toString(),
-                        password.getText().toString());
+                if (UserController.checkUsernameForRegister(username.getText().toString())) {
+                    UserController.addStudent(firstname.getText().toString(), lastname.getText().
+                                    toString(),
+                            studentId.getText().toString(), username.getText().toString(),
+                            password.getText().toString());
+                    Toast toast = Toast.makeText(getContext(), "register account was " +
+                                    "successfully",
+                            Toast.LENGTH_SHORT);
+                    toast.show();
+                } else {
+                    Toast toast = Toast.makeText(getContext(), "this username is already " +
+                                    "exist",
+                            Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             }
         });
 
