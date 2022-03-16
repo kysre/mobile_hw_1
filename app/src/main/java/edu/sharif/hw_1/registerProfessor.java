@@ -90,9 +90,11 @@ public class registerProfessor extends Fragment {
                             , password.getText().toString());
                     Toast toast=Toast.makeText(getContext(),"register was successfully",
                             Toast.LENGTH_SHORT);
+                    toast.show();
                 }else{
                     Toast toast=Toast.makeText(getContext(),"this username is already exist",
                             Toast.LENGTH_SHORT);
+                    toast.show();
                 }
             }
         });

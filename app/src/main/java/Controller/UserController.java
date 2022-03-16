@@ -17,7 +17,7 @@ public class UserController {
     }
 
     public static boolean checkUsernameForRegister(String username) {
-        return User.getUsernameToUser().get(username) != null;
+        return User.getUsernameToUser().get(username) == null;
     }
 
     public static boolean loginErrorHandler(String username, String password) {
