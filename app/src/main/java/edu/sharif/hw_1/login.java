@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -83,8 +84,14 @@ public class login extends Fragment {
                     Toast toast = Toast.makeText(getContext(),
                             "login was successfully",Toast.LENGTH_SHORT);
                     toast.show();
-                    //TODO : when the main menu was created,this function will be completed
-
+                    boolean isStudent = UserController.checkForLogin(username.getText().toString());
+                    if(isStudent){
+                        NavHostFragment.findNavController(login.this).
+                                navigate(R.id.action_login_to_studentMenu);
+                    }else{
+                        NavHostFragment.findNavController(login.this).
+                                navigate(R.id.action_login_to_professorMenu);
+                    }
                 }else {
                     Toast toast = Toast.makeText(getContext(),
                             "username or password was wrong",Toast.LENGTH_SHORT);

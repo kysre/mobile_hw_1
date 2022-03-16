@@ -32,4 +32,8 @@ public class UserController {
         }
     }
 
+    public static boolean checkForLogin(String username) {
+        return Professor.getUsernameToUser().get(username) == null;
+    }
+
 }

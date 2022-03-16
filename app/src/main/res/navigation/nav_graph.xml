@@ -52,5 +52,22 @@
         android:id="@+id/login"
         android:name="edu.sharif.hw_1.login"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_studentMenu"
+            app:destination="@id/studentMenu" />
+        <action
+            android:id="@+id/action_login_to_professorMenu"
+            app:destination="@id/professorMenu" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentMenu"
+        android:name="edu.sharif.hw_1.StudentMenu"
+        android:label="fragment_student_menu"
+        tools:layout="@layout/fragment_student_menu" />
+    <fragment
+        android:id="@+id/professorMenu"
+        android:name="edu.sharif.hw_1.ProfessorMenu"
+        android:label="fragment_professor_menu"
+        tools:layout="@layout/fragment_professor_menu" />
 </navigation>
