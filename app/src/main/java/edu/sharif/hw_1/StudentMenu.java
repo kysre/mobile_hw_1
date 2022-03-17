@@ -2,11 +2,20 @@ package edu.sharif.hw_1;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,5 +69,27 @@ public class StudentMenu extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_student_menu, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        EditText classIdTextView = view.findViewById(R.id.studentCourseEditText);
+        Button joinButton = view.findViewById(R.id.studentJoinClassButton);
+        Button enterButton = view.findViewById(R.id.studentJoinClassButton);
+        RecyclerView courseRecyclerView;
+        CourseRecyclerViewAdapter adapter;
+
+        courseRecyclerView = view.findViewById(R.id.studentCourseRecyclerView);
+        courseRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        ArrayList<String> names = new ArrayList<>();
+//        names.add("Parsa");
+//        names.add("Mohammad");
+        adapter = new CourseRecyclerViewAdapter(getActivity(), names);
+        courseRecyclerView.setAdapter(adapter);
+//        names.add("Ali");
+//        adapter.notifyDataSetChanged();
+
     }
 }
