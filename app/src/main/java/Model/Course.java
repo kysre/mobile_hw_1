@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Course {
     private static ArrayList<Course> courses;
     private String name;
+    private int id;
     private Professor professor;
     private ArrayList<HomeWork> homeWorks;
 
@@ -12,9 +13,10 @@ public class Course {
         courses = new ArrayList<>();
     }
 
-    public Course(String name, Professor professor) {
+    public Course(String name, Professor professor, int id) {
         this.name = name;
         this.professor = professor;
+        this.id = id;
         courses.add(this);
     }
 
