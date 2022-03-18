@@ -12,11 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import java.util.ArrayList;
-
-import Controller.Controller;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -77,11 +77,12 @@ public class StudentMenu extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         EditText classIdTextView = view.findViewById(R.id.studentCourseEditText);
-        Button joinButton = view.findViewById(R.id.studentJoinClassButton);
-        Button enterButton = view.findViewById(R.id.studentJoinClassButton);
+        Switch joinSwitch = view.findViewById(R.id.studentJoinSwitch);
+        Button enterButton = view.findViewById(R.id.studentEnterCourseButton);
         RecyclerView courseRecyclerView;
         RecyclerViewAdapter adapter;
 
+        // TODO: get courseNames and make RecyclerView clickable
         courseRecyclerView = view.findViewById(R.id.studentCourseRecyclerView);
         courseRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 //        ArrayList<String> names = Controller.getCourseNames(username);
@@ -93,5 +94,30 @@ public class StudentMenu extends Fragment {
 //        names.add("Ali");
 //        adapter.notifyDataSetChanged();
 
+
+        joinSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                // TODO: update RecyclerView content based on switch
+                if (isChecked) {
+                    enterButton.setText("Join");
+                } else {
+                    enterButton.setText("Enter");
+                }
+            }
+        });
+
+        enterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean isEnter = enterButton.getText().toString().equals("Enter");
+                int classId = Integer.parseInt(classIdTextView.getText().toString());
+                if (isEnter) {
+                    // TODO: enter class with classId
+                } else {
+                    // TODO: join class with classId
+                }
+            }
+        });
     }
 }
