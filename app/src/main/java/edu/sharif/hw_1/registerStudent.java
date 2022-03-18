@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import Controller.UserController;
+import Controller.Controller;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -81,8 +81,8 @@ public class registerStudent extends Fragment {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (UserController.checkUsernameForRegister(username.getText().toString())) {
-                    UserController.addStudent(firstname.getText().toString(), lastname.getText().
+                if (Controller.checkUsernameForRegister(username.getText().toString())) {
+                    Controller.addStudent(firstname.getText().toString(), lastname.getText().
                                     toString(),
                             studentId.getText().toString(), username.getText().toString(),
                             password.getText().toString());
