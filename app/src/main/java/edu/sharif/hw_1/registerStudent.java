@@ -82,14 +82,19 @@ public class registerStudent extends Fragment {
             @Override
             public void onClick(View view) {
                 if (Controller.checkUsernameForRegister(username.getText().toString())) {
-                    Controller.addStudent(firstname.getText().toString(), lastname.getText().
-                                    toString(),
-                            studentId.getText().toString(), username.getText().toString(),
-                            password.getText().toString());
-                    Toast toast = Toast.makeText(getContext(), "register account was " +
-                                    "successfully",
-                            Toast.LENGTH_SHORT);
-                    toast.show();
+                    if (Controller.isNumeric(studentId.getText().toString())) {
+                        Controller.addStudent(firstname.getText().toString(), lastname.getText().
+                                        toString(),
+                                studentId.getText().toString(), username.getText().toString(),
+                                password.getText().toString());
+                        Toast toast = Toast.makeText(getContext(), "register account was " +
+                                "successfully", Toast.LENGTH_SHORT);
+                        toast.show();
+                    } else {
+                        Toast toast = Toast.makeText(getContext(), "student number should contains only" +
+                                "numbers", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
                 } else {
                     Toast toast = Toast.makeText(getContext(), "this username is already " +
                                     "exist",
