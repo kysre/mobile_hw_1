@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import Controller.UserController;
+import Controller.Controller;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -83,12 +83,12 @@ public class login extends Fragment {
 //                NavHostFragment.findNavController(login.this).
 //                        navigate(R.id.action_login_to_studentMenu);
 
-                if (UserController.loginErrorHandler(username.getText().toString(),
+                if (Controller.loginErrorHandler(username.getText().toString(),
                         password.getText().toString())) {
                     Toast toast = Toast.makeText(getContext(),
                             "login was successfully", Toast.LENGTH_SHORT);
                     toast.show();
-                    boolean isStudent = UserController.checkForLogin(username.getText().toString());
+                    boolean isStudent = Controller.checkForLogin(username.getText().toString());
                     if (isStudent) {
                         NavHostFragment.findNavController(login.this).
                                 navigate(R.id.action_login_to_studentMenu);

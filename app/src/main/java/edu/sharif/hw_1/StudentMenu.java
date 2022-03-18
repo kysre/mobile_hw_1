@@ -13,9 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import Controller.Controller;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -79,14 +80,14 @@ public class StudentMenu extends Fragment {
         Button joinButton = view.findViewById(R.id.studentJoinClassButton);
         Button enterButton = view.findViewById(R.id.studentJoinClassButton);
         RecyclerView courseRecyclerView;
-        CourseRecyclerViewAdapter adapter;
+        RecyclerViewAdapter adapter;
 
         courseRecyclerView = view.findViewById(R.id.studentCourseRecyclerView);
         courseRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        ArrayList<String> names = new ArrayList<>();
+        ArrayList<String> names = Controller.getCourseNames(username);
 //        names.add("Parsa");
 //        names.add("Mohammad");
-        adapter = new CourseRecyclerViewAdapter(getActivity(), names);
+        adapter = new RecyclerViewAdapter(getActivity(), names);
         courseRecyclerView.setAdapter(adapter);
 //        names.add("Ali");
 //        adapter.notifyDataSetChanged();

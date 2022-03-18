@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecyclerViewAdapter.ViewHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
-    private List<String> courseNames;
+    private List<String> names;
     private LayoutInflater inflater;
 
-    public CourseRecyclerViewAdapter(Context context, List<String> courseNames) {
-        this.courseNames = courseNames;
+    public RecyclerViewAdapter(Context context, List<String> names) {
+        this.names = names;
         this.inflater = LayoutInflater.from(context);
     }
 
@@ -30,12 +30,12 @@ public class CourseRecyclerViewAdapter extends RecyclerView.Adapter<CourseRecycl
 
     @Override
     public int getItemCount() {
-        return courseNames.size();
+        return names.size();
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.rowTextView.setText(courseNames.get(position));
+        holder.rowTextView.setText(names.get(position));
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
