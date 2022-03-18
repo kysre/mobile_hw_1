@@ -17,7 +17,7 @@ public class Controller {
 
     public static void addStudent(String firstName, String lastName, String studentId,
                                   String username, String password) {
-        new Student(firstName, lastName, username, password, Integer.parseInt(studentId));
+        new Student(firstName, lastName, username, password, studentId);
     }
 
     public static boolean checkUsernameForRegister(String username) {
