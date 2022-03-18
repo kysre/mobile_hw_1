@@ -84,9 +84,10 @@ public class StudentMenu extends Fragment {
 
         courseRecyclerView = view.findViewById(R.id.studentCourseRecyclerView);
         courseRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        ArrayList<String> names = Controller.getCourseNames(username);
-//        names.add("Parsa");
-//        names.add("Mohammad");
+//        ArrayList<String> names = Controller.getCourseNames(username);
+        ArrayList<String> names = new ArrayList<>();
+        names.add("Parsa");
+        names.add("Mohammad");
         adapter = new RecyclerViewAdapter(getActivity(), names);
         courseRecyclerView.setAdapter(adapter);
 //        names.add("Ali");
