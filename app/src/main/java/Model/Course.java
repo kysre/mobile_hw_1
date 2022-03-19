@@ -41,6 +41,23 @@ public class Course {
         return null;
     }
 
+    public static Course getCourseById(int courseId) {
+        for (Course course : courses) {
+            if (course.getId() == courseId) {
+                return course;
+            }
+        }
+        return null;
+    }
+
+    public static ArrayList<Course> getAllCourses() {
+        return courses;
+    }
+
+    public int getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
