@@ -5,11 +5,15 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import edu.sharif.hw_1.databinding.FragmentFirstBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,6 +21,8 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class ProfessorMenu extends Fragment {
+
+    private FragmentFirstBinding binding;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -68,5 +74,16 @@ public class ProfessorMenu extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Button createClassButton = view.findViewById(R.id.createClass);
+
+        createClassButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(ProfessorMenu.this)
+                        .navigate(R.id.action_ProfessorMenu_to_CreateClass);
+
+            }
+        });
     }
 }
