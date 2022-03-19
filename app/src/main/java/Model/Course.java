@@ -50,6 +50,7 @@ public class Course {
 
     public String getName() {
         return name;
+
     }
 
     public Professor getProfessor() {
@@ -81,29 +82,6 @@ public class Course {
     public static ArrayList<Course> getCourses() {
 
         return courses;
-    }
 
+   
 
-    @Override
-    public String toString() {
-
-        return "Course{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
-                ", professor=" + professor +
-                ", homeWorks=" + homeWorks +
-                '}';
-    }
-
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
-    }
-
-
-}
