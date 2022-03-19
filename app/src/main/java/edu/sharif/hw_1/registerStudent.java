@@ -15,11 +15,7 @@ import android.widget.Toast;
 
 import Controller.Controller;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link registerStudent#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class registerStudent extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -35,27 +31,23 @@ public class registerStudent extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment registerStudent.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static registerStudent newInstance(String param1, String param2) {
+
         registerStudent fragment = new registerStudent();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -78,7 +70,11 @@ public class registerStudent extends Fragment {
         TextView lastname = view.findViewById(R.id.lastnamestudent);
         TextView password = view.findViewById(R.id.passwordstudent);
         TextView studentId = view.findViewById(R.id.studentid);
+
+
         registerButton.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
                 if (Controller.checkUsernameForRegister(username.getText().toString())) {
@@ -101,7 +97,9 @@ public class registerStudent extends Fragment {
                             Toast.LENGTH_SHORT);
                     toast.show();
                 }
+
             }
+
         });
 
     }

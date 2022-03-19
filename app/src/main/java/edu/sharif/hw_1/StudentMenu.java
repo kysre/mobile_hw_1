@@ -29,9 +29,10 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_student_menu, container, false);
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
 
         EditText classIdTextView = view.findViewById(R.id.studentCourseEditText);
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch joinSwitch = view.findViewById(R.id.studentJoinSwitch);
+
         Button enterButton = view.findViewById(R.id.studentEnterCourseButton);
         RecyclerView courseRecyclerView;
         RecyclerViewAdapter adapter;
@@ -47,6 +49,7 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
         courseRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 //        listItems = Controller.getCourseListItems();
+
         listItems = new ArrayList<>();
         listItems.add(new RecyclerViewAdapter.ListItem("course-1", "40085"));
         listItems.add(new RecyclerViewAdapter.ListItem("course-2", "40095"));
@@ -77,11 +80,13 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onClick(View view) {
+                
                 boolean isEnter = enterButton.getText().toString().equals("Enter");
                 int courseId = Integer.parseInt(classIdTextView.getText().toString());
                 if (isEnter) {
                     // TODO: enter class with classId
                 } else {
+
                     if (Controller.joinCourse(courseId)) {
                         Toast toast = Toast.makeText(getContext(),
                                 "Course joined Successfully!", Toast.LENGTH_LONG);
@@ -94,8 +99,11 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
                         toast.show();
                     }
                 }
+
             }
+
         });
+
     }
 
     @Override
