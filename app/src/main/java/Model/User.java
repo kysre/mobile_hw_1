@@ -76,4 +76,22 @@ public class User {
         }
         return false;
     }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", courses=" + courses +
+                '}';
+    }
+
+    public static HashMap<String, User> getUserHashmap() {
+        return userHashmap;
+    }
+
+
 }
