@@ -3,6 +3,7 @@ package Controller;
 import java.util.ArrayList;
 
 import Model.Course;
+import Model.Homework;
 import Model.Professor;
 import Model.Student;
 import Model.User;
@@ -106,5 +107,24 @@ public class Controller {
 
     public static boolean isCourseJoinedByOnlineUser(String courseName) {
         return onlineUser.isCourseJoined(Course.getCourseByName(courseName));
+    }
+
+    public static String getHomeworkQuestion(String courseName, String homeworkName) {
+        Homework homework = Course.getCourseByName(courseName).getHomeworkByName(homeworkName);
+        if (homework != null) {
+            return homework.getQuestion();
+        }
+        return null;
+    }
+
+    public static boolean setAnswerForOnlineUser(String courseName, String homeworkName, String answer) {
+        Homework homework = Course.getCourseByName(courseName).getHomeworkByName(homeworkName);
+        if (onlineUser instanceof Student && homework != null) {
+            Student student = (Student) onlineUser;
+            Course.getCourseByName(courseName).getHomeworkByName(homeworkName)
+                    .setStudentAnswer(student, answer);
+            return true;
+        }
+        return false;
     }
 }

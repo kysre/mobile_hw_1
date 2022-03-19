@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Student extends User {
     private static ArrayList<Student> students = new ArrayList<>();
@@ -111,5 +112,16 @@ public class Student extends User {
         super.setUsername(username);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return getUsername().equals(student.getUsername());
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(studentId);
+    }
 }

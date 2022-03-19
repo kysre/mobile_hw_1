@@ -49,6 +49,7 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
         courseRecyclerView = view.findViewById(R.id.studentCourseRecyclerView);
         courseRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        // TODO: fix courseList
 //        listItems = Controller.getCourseListItems();
 
         listItems = new ArrayList<>();
@@ -84,7 +85,6 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
                 boolean isEnter = enterButton.getText().toString().equals("Enter");
                 int courseId = Integer.parseInt(classIdTextView.getText().toString());
                 if (isEnter) {
-                    // TODO: enter class with classId
                     String courseName = Controller.getCourseNameById(courseId);
                     if (courseName != null) {
                         boolean isCourseJoined = Controller.isCourseJoinedByOnlineUser(courseName);

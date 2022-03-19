@@ -61,6 +61,15 @@ public class Course {
         return homeworks;
     }
 
+    public Homework getHomeworkByName(String homeworkName) {
+        for (Homework homework : homeworks) {
+            if (homework.getName().equals(homeworkName)) {
+                return homework;
+            }
+        }
+        return null;
+    }
+
     public void homework(Homework homework) {
         this.homeworks.add(homework);
     }
@@ -76,10 +85,6 @@ public class Course {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public static ArrayList<Course> getCourses() {
-        return courses;
     }
 }
 

@@ -41,6 +41,10 @@ public class Homework {
         this.studentAnswers = studentAnswers;
     }
 
+    public void setStudentAnswer(Student student, String answer) {
+        studentAnswers.put(student, answer);
+    }
+
     public void setQuestion(String question) {
         this.question = question;
     }
@@ -80,6 +84,5 @@ public class Homework {
     public void setHomeworkCourse(Course homeworkCourse) {
         this.homeworkCourse = homeworkCourse;
     }
-
 
 }
