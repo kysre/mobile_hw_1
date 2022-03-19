@@ -82,5 +82,20 @@
         <argument
             android:name="courseName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_student_course_to_homework_fragment"
+            app:destination="@id/studentHomeworkFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentHomeworkFragment"
+        android:name="edu.sharif.hw_1.StudentHomeworkFragment"
+        android:label="fragment_student_homework"
+        tools:layout="@layout/fragment_student_homework">
+        <argument
+            android:name="courseName"
+            app:argType="string"/>
+        <argument
+            android:name="homeworkName"
+            app:argType="string" />
     </fragment>
 </navigation>

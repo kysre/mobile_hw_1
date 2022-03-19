@@ -8,8 +8,6 @@
     android:textAlignment="center"
     tools:context=".StudentMenu">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <Button
         android:id="@+id/studentEnterCourseButton"
         android:layout_width="wrap_content"

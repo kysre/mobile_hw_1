@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -69,7 +70,9 @@ public class StudentCourseFragment extends Fragment implements RecyclerViewAdapt
             @Override
             public void onClick(View view) {
                 String homeworkName = homeworkNameEditText.getText().toString();
-                // TODO: go to homework page
+                NavHostFragment.findNavController(StudentCourseFragment.this)
+                        .navigate(StudentCourseFragmentDirections
+                                .actionStudentCourseToHomeworkFragment(courseName, homeworkName));
             }
         });
     }
@@ -77,7 +80,8 @@ public class StudentCourseFragment extends Fragment implements RecyclerViewAdapt
     @Override
     public void onItemClicked(RecyclerViewAdapter.ListItem listItem) {
         String homeworkName = listItem.getLeftString();
-        // TODO: go to homework page
-        Toast.makeText(getActivity(), homeworkName, Toast.LENGTH_SHORT).show();
+        NavHostFragment.findNavController(StudentCourseFragment.this)
+                .navigate(StudentCourseFragmentDirections
+                        .actionStudentCourseToHomeworkFragment(courseName, homeworkName));
     }
 }
