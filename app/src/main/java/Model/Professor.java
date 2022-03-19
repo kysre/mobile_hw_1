@@ -15,6 +15,26 @@ public class Professor extends User {
         allProfessor.add(this);
     }
 
+    @Override
+    public String getFirstname() {
+        return super.getFirstname();
+    }
+
+    @Override
+    public String getLastname() {
+        return super.getLastname();
+    }
+
+    @Override
+    public String getPassword() {
+        return super.getPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return super.getUsername();
+    }
+
     public String getUniversityName() {
         return universityName;
     }

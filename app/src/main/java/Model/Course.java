@@ -18,6 +18,7 @@ public class Course {
         this.professor = professor;
         this.id = id;
         courses.add(this);
+        homeWorks = new ArrayList<>();
     }
 
     public static Course getCourseByName(String name) {

@@ -14,6 +14,26 @@ public class Student extends User {
         students.add(this);
     }
 
+    @Override
+    public String getUsername() {
+        return super.getUsername();
+    }
+
+    @Override
+    public String getPassword() {
+        return super.getPassword();
+    }
+
+    @Override
+    public String getLastname() {
+        return super.getLastname();
+    }
+
+    @Override
+    public String getFirstname() {
+        return super.getFirstname();
+    }
+
     public String getStudentId() {
         return studentId;
     }
