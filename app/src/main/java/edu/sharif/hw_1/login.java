@@ -16,11 +16,7 @@ import android.widget.Toast;
 
 import Controller.Controller;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link login#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class login extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -36,15 +32,8 @@ public class login extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment login.
-     */
-//     TODO: Rename and change types and number of parameters
+
+
     public static login newInstance(String param1, String param2) {
         login fragment = new login();
         Bundle args = new Bundle();
@@ -83,24 +72,7 @@ public class login extends Fragment {
                 NavHostFragment.findNavController(login.this).
                         navigate(R.id.action_login_to_studentMenu);
 
-//                if (Controller.loginErrorHandler(username.getText().toString(),
-//                        password.getText().toString())) {
-//                    Toast toast = Toast.makeText(getContext(),
-//                            "login was successfully", Toast.LENGTH_LONG);
-//                    toast.show();
-//                    boolean isStudent = Controller.checkForLogin(username.getText().toString());
-//                    if (isStudent) {
-//                        NavHostFragment.findNavController(login.this).
-//                                navigate(R.id.action_login_to_studentMenu);
-//                    } else {
-//                        NavHostFragment.findNavController(login.this).
-//                                navigate(R.id.action_login_to_professorMenu);
-//                    }
-//                } else {
-//                    Toast toast = Toast.makeText(getContext(),
-//                            "username or password was wrong", Toast.LENGTH_LONG);
-//                    toast.show();
-//                }
+
             }
         });
     }
