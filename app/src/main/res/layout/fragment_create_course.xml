@@ -3,34 +3,4 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="144dp"
-        android:layout_height="30dp"
-        android:text="Course Create Panel"
-        tools:layout_editor_absoluteX="133dp"
-        tools:layout_editor_absoluteY="121dp" />
-
-    <EditText
-        android:id="@+id/courseNameField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Course Name"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="92dp"
-        tools:layout_editor_absoluteY="243dp" />
-
-    <Button
-        android:id="@+id/createCourseSubmit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@android:color/holo_blue_light"
-        android:text="Submit"
-        app:iconTint="@color/black"
-        app:rippleColor="@android:color/holo_blue_light"
-        tools:layout_editor_absoluteX="240dp"
-        tools:layout_editor_absoluteY="331dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    android:layout_height="match_parent"/>
