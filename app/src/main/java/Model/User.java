@@ -20,6 +20,10 @@ public class User {
         userHashmap.put(username, this);
     }
 
+    public static User getUserByUsername(String username) {
+        return userHashmap.get(username);
+    }
+
     public String getFirstname() {
         return firstname;
     }
@@ -64,8 +68,13 @@ public class User {
         return courses;
     }
 
-    public static User getUserByUsername(String username) {
-        return userHashmap.get(username);
+    public boolean isCourseJoined(Course testCourse) {
+        for (Course course : courses) {
+            if (course.getName().equals(testCourse.getName())) {
+                return true;
+            }
+        }
+        return false;
     }
 
 

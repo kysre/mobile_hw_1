@@ -1,5 +1,6 @@
 package edu.sharif.hw_1;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,55 +16,15 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link StudentMenu#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class StudentMenu extends Fragment {
+import Controller.Controller;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectListener {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public StudentMenu() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment StudentMenu.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static StudentMenu newInstance(String param1, String param2) {
-        StudentMenu fragment = new StudentMenu();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private ArrayList<RecyclerViewAdapter.ListItem> listItems;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,47 +38,69 @@ public class StudentMenu extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         EditText classIdTextView = view.findViewById(R.id.studentCourseEditText);
-        Switch joinSwitch = view.findViewById(R.id.studentJoinSwitch);
+        @SuppressLint("UseSwitchCompatOrMaterialCode") Switch joinSwitch = view.findViewById(R.id.studentJoinSwitch);
         Button enterButton = view.findViewById(R.id.studentEnterCourseButton);
         RecyclerView courseRecyclerView;
         RecyclerViewAdapter adapter;
 
-        // TODO: get courseNames and make RecyclerView clickable
         courseRecyclerView = view.findViewById(R.id.studentCourseRecyclerView);
         courseRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        ArrayList<String> names = Controller.getCourseNames(username);
-        ArrayList<String> names = new ArrayList<>();
-        names.add("Parsa");
-        names.add("Mohammad");
-        adapter = new RecyclerViewAdapter(getActivity(), names);
-        courseRecyclerView.setAdapter(adapter);
-//        names.add("Ali");
-//        adapter.notifyDataSetChanged();
 
+//        listItems = Controller.getCourseListItems();
+        listItems = new ArrayList<>();
+        listItems.add(new RecyclerViewAdapter.ListItem("course-1", "40085"));
+        listItems.add(new RecyclerViewAdapter.ListItem("course-2", "40095"));
+        listItems.add(new RecyclerViewAdapter.ListItem("course-3", "21085"));
+        listItems.add(new RecyclerViewAdapter.ListItem("course-4", "20085"));
+        listItems.add(new RecyclerViewAdapter.ListItem("course-5", "33085"));
+        listItems.add(new RecyclerViewAdapter.ListItem("course-6", "12085"));
+
+        adapter = new RecyclerViewAdapter(getActivity(), listItems, this);
+        courseRecyclerView.setAdapter(adapter);
 
         joinSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                // TODO: update RecyclerView content based on switch
                 if (isChecked) {
                     enterButton.setText("Join");
+                    listItems = Controller.getNotJoinedCourseListItems();
                 } else {
                     enterButton.setText("Enter");
+                    listItems = Controller.getCourseListItems();
                 }
+                adapter.notifyDataSetChanged();
             }
         });
 
         enterButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onClick(View view) {
                 boolean isEnter = enterButton.getText().toString().equals("Enter");
-                int classId = Integer.parseInt(classIdTextView.getText().toString());
+                int courseId = Integer.parseInt(classIdTextView.getText().toString());
                 if (isEnter) {
                     // TODO: enter class with classId
                 } else {
-                    // TODO: join class with classId
+                    if (Controller.joinCourse(courseId)) {
+                        Toast toast = Toast.makeText(getContext(),
+                                "Course joined Successfully!", Toast.LENGTH_LONG);
+                        toast.show();
+                        listItems = Controller.getNotJoinedCourseListItems();
+                        adapter.notifyDataSetChanged();
+                    } else {
+                        Toast toast = Toast.makeText(getContext(),
+                                "Unable to join course!", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
                 }
             }
         });
+    }
+
+    @Override
+    public void onItemClicked(RecyclerViewAdapter.ListItem listItem) {
+        // TODO: go to course page or join course after being clicked
+        Toast.makeText(getActivity(), listItem.getLeftString(), Toast.LENGTH_SHORT).show();
     }
 }

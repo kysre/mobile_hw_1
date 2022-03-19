@@ -50,6 +50,7 @@ public class Course {
 
     public String getName() {
         return name;
+
     }
 
     public Professor getProfessor() {
@@ -63,5 +64,24 @@ public class Course {
     public void homework(Homework homework) {
         this.homework.add(homework);
     }
-}
+
+    public static void setCourses(ArrayList<Course> courses) {
+
+        Course.courses = courses;
+    }
+
+    public void setHomeWorks(ArrayList<HomeWork> homeWorks) {
+
+        this.homeWorks = homeWorks;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public static ArrayList<Course> getCourses() {
+
+        return courses;
+
+   
 

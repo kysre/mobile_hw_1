@@ -1,14 +1,16 @@
 package Controller;
 
-import java.sql.Array;
 import java.util.ArrayList;
 
 import Model.Course;
 import Model.Professor;
 import Model.Student;
 import Model.User;
+import edu.sharif.hw_1.RecyclerViewAdapter;
 
 public class Controller {
+
+    private static User onlineUser;
 
     public static void addProfessor(String firstName, String lastName,
                                     String university, String username, String password) {
@@ -28,6 +30,7 @@ public class Controller {
         User user = User.getUserByUsername(username);
         if (user != null) {
             if (user.checkPassword(password)) {
+                onlineUser = user;
                 return true;
             } else {
                 return false;
@@ -41,13 +44,25 @@ public class Controller {
         return Professor.getUserByUsername(username) == null;
     }
 
-    public static ArrayList<String> getCourseNames(String username) {
-        User user = User.getUserByUsername(username);
-        ArrayList<String> courseNames = new ArrayList<>();
-        for (Course course : user.getCourses()) {
-            courseNames.add(course.getName());
+    public static ArrayList<RecyclerViewAdapter.ListItem> getCourseListItems() {
+        ArrayList<RecyclerViewAdapter.ListItem> courseList = new ArrayList<>();
+        for (Course course : onlineUser.getCourses()) {
+            courseList.add(new RecyclerViewAdapter.ListItem
+                    (course.getName(), String.valueOf(course.getId())));
         }
-        return courseNames;
+        return courseList;
+    }
+
+    public static ArrayList<RecyclerViewAdapter.ListItem> getNotJoinedCourseListItems() {
+        ArrayList<RecyclerViewAdapter.ListItem> courseList = new ArrayList<>();
+        ArrayList<Course> allCourses = Course.getAllCourses();
+        for (Course course : allCourses) {
+            if (!onlineUser.isCourseJoined(course)) {
+                courseList.add(new RecyclerViewAdapter.ListItem
+                        (course.getName(), String.valueOf(course.getId())));
+            }
+        }
+        return courseList;
     }
 
     public static boolean isNumeric(String string) {
@@ -55,7 +70,7 @@ public class Controller {
 
         System.out.println(String.format("Parsing string: \"%s\"", string));
 
-        if(string == null || string.equals("")) {
+        if (string == null || string.equals("")) {
             System.out.println("String cannot be parsed, it is null or empty.");
             return false;
         }
@@ -65,6 +80,13 @@ public class Controller {
             return true;
         } catch (NumberFormatException e) {
             System.out.println("Input String cannot be parsed to Integer.");
+        }
+        return false;
+    }
+
+    public static boolean joinCourse(int courseId) {
+        if (onlineUser instanceof Student) {
+            return ((Student) onlineUser).joinCourse(courseId);
         }
         return false;
     }
