@@ -20,8 +20,32 @@ public class Course {
         courses.add(this);
     }
 
+    public static Course getCourseByName(String name) {
+        for (Course course : courses) {
+            if (course.getName().equals(name)) {
+                return course;
+            }
+        }
+
+        return null;
+    }
+
+    public static Course getCourseById(int id) {
+        for (Course course : courses) {
+            if (course.getId() == id) {
+                return course;
+            }
+        }
+
+        return null;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public Professor getProfessor() {
