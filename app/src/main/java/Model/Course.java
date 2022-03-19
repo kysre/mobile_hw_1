@@ -31,23 +31,23 @@ public class Course {
         return null;
     }
 
-//    public static Course getCourseById(int id) {
-//        for (Course course : courses) {
-//            if (course.getId() == id) {
-//                return course;
-//            }
-//        }
-//
-//        return null;
-//    }
+    public static Course getCourseById(int id) {
+        for (Course course : courses) {
+            if (course.getId() == id) {
+                return course;
+            }
+        }
+
+        return null;
+    }
 
     public String getName() {
         return name;
     }
 
-//    public int getId() {
-//        return id;
-//    }
+    public int getId() {
+        return id;
+    }
 
     public Professor getProfessor() {
         return professor;
