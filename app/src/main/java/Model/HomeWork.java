@@ -34,54 +34,54 @@ public class HomeWork {
     }
 
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Course getHomeWorkCourse() {
-        return homeWorkCourse;
-    }
-
-
-    public void setHomeWorkCourse(Course homeWorkCourse) {
-        this.homeWorkCourse = homeWorkCourse;
-    }
-
-
-
-    @Override
-    public String toString() {
-
-        return "HomeWork{" +
-                "name='" + name + '\'' +
-                ", question='" + question + '\'' +
-                ", homeWorkCourse=" + homeWorkCourse +
-                ", studentAnswers=" + studentAnswers +
-                ", studentMarks=" + studentMarks +
-                '}';
-    }
-
-
-    public HashMap<Student, Float> getStudentMarks() {
-        return studentMarks;
-    }
-
-    public HashMap<Student, String> getStudentAnswers() {
-        return studentAnswers;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
-    public void setStudentAnswers(HashMap<Student, String> studentAnswers) {
-        this.studentAnswers = studentAnswers;
-    }
-
-
-    public void setStudentMarks(HashMap<Student, Float> studentMarks) {
-        this.studentMarks = studentMarks;
-    }
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    public Course getHomeWorkCourse() {
+//        return homeWorkCourse;
+//    }
+//
+//
+//    public void setHomeWorkCourse(Course homeWorkCourse) {
+//        this.homeWorkCourse = homeWorkCourse;
+//    }
+//
+//
+//
+//    @Override
+//    public String toString() {
+//
+//        return "HomeWork{" +
+//                "name='" + name + '\'' +
+//                ", question='" + question + '\'' +
+//                ", homeWorkCourse=" + homeWorkCourse +
+//                ", studentAnswers=" + studentAnswers +
+//                ", studentMarks=" + studentMarks +
+//                '}';
+//    }
+//
+//
+//    public HashMap<Student, Float> getStudentMarks() {
+//        return studentMarks;
+//    }
+//
+//    public HashMap<Student, String> getStudentAnswers() {
+//        return studentAnswers;
+//    }
+//
+//    public void setQuestion(String question) {
+//        this.question = question;
+//    }
+//
+//    public void setStudentAnswers(HashMap<Student, String> studentAnswers) {
+//        this.studentAnswers = studentAnswers;
+//    }
+//
+//
+//    public void setStudentMarks(HashMap<Student, Float> studentMarks) {
+//        this.studentMarks = studentMarks;
+//    }
 
 
 }
