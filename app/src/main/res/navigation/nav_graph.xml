@@ -64,10 +64,23 @@
         android:id="@+id/studentMenu"
         android:name="edu.sharif.hw_1.StudentMenu"
         android:label="fragment_student_menu"
-        tools:layout="@layout/fragment_student_menu" />
+        tools:layout="@layout/fragment_student_menu" >
+        <action
+            android:id="@+id/action_student_menu_to_course_fragment"
+            app:destination="@id/studentCourseFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/professorMenu"
         android:name="edu.sharif.hw_1.ProfessorMenu"
         android:label="fragment_professor_menu"
         tools:layout="@layout/fragment_professor_menu" />
+    <fragment
+        android:id="@+id/studentCourseFragment2"
+        android:name="edu.sharif.hw_1.StudentCourseFragment"
+        android:label="fragment_student_course"
+        tools:layout="@layout/fragment_student_course" >
+        <argument
+            android:name="courseName"
+            app:argType="string" />
+    </fragment>
 </navigation>

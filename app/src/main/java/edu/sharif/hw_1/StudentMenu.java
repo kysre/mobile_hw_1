@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -101,6 +102,13 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
     @Override
     public void onItemClicked(RecyclerViewAdapter.ListItem listItem) {
         // TODO: go to course page or join course after being clicked
+        String courseName = listItem.getLeftString();
+        // TODO: pass course name to course menu
+//        NavHostFragment.findNavController(StudentMenu.this).navigate(StudentMenuDirection);
+
+        NavHostFragment.findNavController(StudentMenu.this).
+                navigate(R.id.action_student_menu_to_course_fragment);
+
         Toast.makeText(getActivity(), listItem.getLeftString(), Toast.LENGTH_SHORT).show();
     }
 }
