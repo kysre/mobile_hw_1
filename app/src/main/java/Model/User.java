@@ -67,4 +67,22 @@ public class User {
     public static User getUserByUsername(String username) {
         return userHashmap.get(username);
     }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", courses=" + courses +
+                '}';
+    }
+
+    public static HashMap<String, User> getUserHashmap() {
+        return userHashmap;
+    }
+
+    
 }

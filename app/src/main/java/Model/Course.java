@@ -60,4 +60,47 @@ public class Course {
     public void addHomeWork(HomeWork homeWork) {
         this.homeWorks.add(homeWork);
     }
+
+    public static void setCourses(ArrayList<Course> courses) {
+
+        Course.courses = courses;
+    }
+
+    public void setHomeWorks(ArrayList<HomeWork> homeWorks) {
+
+        this.homeWorks = homeWorks;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public static ArrayList<Course> getCourses() {
+
+        return courses;
+    }
+
+
+    @Override
+    public String toString() {
+
+        return "Course{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", professor=" + professor +
+                ", homeWorks=" + homeWorks +
+                '}';
+    }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+
 }
