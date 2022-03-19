@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="action_FirstFragment_to_ProfessorLogin" type="id">ProfessorLogin</item>
+    <item name="createClass" type="id">CreateClass</item>
+    <item name="action_ProfessorMenu_to_CreateClass" type="id">CreateClass</item>
+</resources>
