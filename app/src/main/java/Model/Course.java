@@ -31,16 +31,6 @@ public class Course {
         return null;
     }
 
-    public static Course getCourseById(int id) {
-        for (Course course : courses) {
-            if (course.getId() == id) {
-                return course;
-            }
-        }
-
-        return null;
-    }
-
     public static Course getCourseById(int courseId) {
         for (Course course : courses) {
             if (course.getId() == courseId) {
@@ -60,10 +50,6 @@ public class Course {
 
     public String getName() {
         return name;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public Professor getProfessor() {
