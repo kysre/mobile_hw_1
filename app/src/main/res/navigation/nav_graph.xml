@@ -50,7 +50,7 @@
         tools:layout="@layout/fragment_register_student" />
     <fragment
         android:id="@+id/login"
-        android:name="edu.sharif.hw_1.login"
+        android:name="edu.sharif.hw_1.Login"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
