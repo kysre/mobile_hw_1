@@ -38,10 +38,11 @@ public class FirstFragment extends Fragment {
         binding.RegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isProfessor.isChecked()) {
+                if (isProfessor.isChecked()) {
                     NavHostFragment.findNavController(FirstFragment.this)
                             .navigate(R.id.action_FirstFragment_to_registerProfessor);
-                }else{
+                }
+                else {
                     NavHostFragment.findNavController(FirstFragment.this).navigate(R.id.
                             action_FirstFragment_to_registerStudent);
                 }
@@ -51,8 +52,14 @@ public class FirstFragment extends Fragment {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(FirstFragment.this).
-                navigate(R.id.action_FirstFragment_to_login);
+                if (isProfessor.isChecked()) {
+                    NavHostFragment.findNavController(FirstFragment.this).
+                            navigate(R.id.action_FirstFragment_to_login);
+                }
+                else {
+                    NavHostFragment.findNavController(FirstFragment.this).
+                            navigate(R.id.action_FirstFragment_to_login);
+                }
             }
         });
     }
