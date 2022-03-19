@@ -81,13 +81,28 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onClick(View view) {
-                
                 boolean isEnter = enterButton.getText().toString().equals("Enter");
                 int courseId = Integer.parseInt(classIdTextView.getText().toString());
                 if (isEnter) {
                     // TODO: enter class with classId
+                    String courseName = Controller.getCourseNameById(courseId);
+                    if (courseName != null) {
+                        boolean isCourseJoined = Controller.isCourseJoinedByOnlineUser(courseName);
+                        if (isCourseJoined) {
+                            NavHostFragment.findNavController(StudentMenu.this)
+                                    .navigate(StudentMenuDirections
+                                            .actionStudentMenuToCourseFragment(courseName));
+                        } else {
+                            Toast toast = Toast.makeText(getContext(),
+                                    "You haven't joined this course!", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                    } else {
+                        Toast toast = Toast.makeText(getContext(),
+                                "Course Id was wrong!", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
                 } else {
-
                     if (Controller.joinCourse(courseId)) {
                         Toast toast = Toast.makeText(getContext(),
                                 "Course joined Successfully!", Toast.LENGTH_LONG);
@@ -100,23 +115,14 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
                         toast.show();
                     }
                 }
-
             }
-
         });
-
     }
 
     @Override
     public void onItemClicked(RecyclerViewAdapter.ListItem listItem) {
-        // TODO: go to course page or join course after being clicked
         String courseName = listItem.getLeftString();
-        // TODO: pass course name to course menu
-//        NavHostFragment.findNavController(StudentMenu.this).navigate(StudentMenuDirection);
-
-        NavHostFragment.findNavController(StudentMenu.this).
-                navigate(R.id.action_student_menu_to_course_fragment);
-
-        Toast.makeText(getActivity(), listItem.getLeftString(), Toast.LENGTH_SHORT).show();
+        NavHostFragment.findNavController(StudentMenu.this)
+                .navigate(StudentMenuDirections.actionStudentMenuToCourseFragment(courseName));
     }
 }

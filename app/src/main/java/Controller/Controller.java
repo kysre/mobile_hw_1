@@ -90,4 +90,21 @@ public class Controller {
         }
         return false;
     }
+
+    public static String getCourseProfessorName(String courseName) {
+        Professor professor = Course.getCourseByName(courseName).getProfessor();
+        return professor.getFirstname() + professor.getLastname();
+    }
+
+    public static String getCourseNameById(int courseId) {
+        Course course = Course.getCourseById(courseId);
+        if (course != null) {
+            return course.getName();
+        }
+        return null;
+    }
+
+    public static boolean isCourseJoinedByOnlineUser(String courseName) {
+        return onlineUser.isCourseJoined(Course.getCourseByName(courseName));
+    }
 }

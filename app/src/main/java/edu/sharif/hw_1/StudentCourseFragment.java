@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import Controller.Controller;
+
 public class StudentCourseFragment extends Fragment implements RecyclerViewAdapter.SelectListener {
     private String courseName;
     private ArrayList<RecyclerViewAdapter.ListItem> homeworkItemList;
@@ -31,7 +33,7 @@ public class StudentCourseFragment extends Fragment implements RecyclerViewAdapt
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_student_menu, container, false);
+        return inflater.inflate(R.layout.fragment_student_course, container, false);
     }
 
     @Override
@@ -44,7 +46,9 @@ public class StudentCourseFragment extends Fragment implements RecyclerViewAdapt
         enterHomeworkButton = view.findViewById(R.id.enterHomeworkButton);
         homeworkRecyclerView = view.findViewById(R.id.courseHomeworkRecyclerView);
 
-        // TODO: set prof and course name
+        courseName = StudentCourseFragmentArgs.fromBundle(getArguments()).getCourseName();
+        courseTextView.setText(courseName);
+//        profTextView.setText(Controller.getCourseProfessorName(courseName));
 
         homeworkRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         homeworkItemList = new ArrayList<>();
