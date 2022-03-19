@@ -83,24 +83,24 @@ public class login extends Fragment {
                 NavHostFragment.findNavController(login.this).
                         navigate(R.id.action_login_to_studentMenu);
 
-                if (Controller.loginErrorHandler(username.getText().toString(),
-                        password.getText().toString())) {
-                    Toast toast = Toast.makeText(getContext(),
-                            "login was successfully", Toast.LENGTH_SHORT);
-                    toast.show();
-                    boolean isStudent = Controller.checkForLogin(username.getText().toString());
-                    if (isStudent) {
-                        NavHostFragment.findNavController(login.this).
-                                navigate(R.id.action_login_to_studentMenu);
-                    } else {
-                        NavHostFragment.findNavController(login.this).
-                                navigate(R.id.action_login_to_professorMenu);
-                    }
-                } else {
-                    Toast toast = Toast.makeText(getContext(),
-                            "username or password was wrong", Toast.LENGTH_SHORT);
-                    toast.show();
-                }
+//                if (Controller.loginErrorHandler(username.getText().toString(),
+//                        password.getText().toString())) {
+//                    Toast toast = Toast.makeText(getContext(),
+//                            "login was successfully", Toast.LENGTH_LONG);
+//                    toast.show();
+//                    boolean isStudent = Controller.checkForLogin(username.getText().toString());
+//                    if (isStudent) {
+//                        NavHostFragment.findNavController(login.this).
+//                                navigate(R.id.action_login_to_studentMenu);
+//                    } else {
+//                        NavHostFragment.findNavController(login.this).
+//                                navigate(R.id.action_login_to_professorMenu);
+//                    }
+//                } else {
+//                    Toast toast = Toast.makeText(getContext(),
+//                            "username or password was wrong", Toast.LENGTH_LONG);
+//                    toast.show();
+//                }
             }
         });
     }

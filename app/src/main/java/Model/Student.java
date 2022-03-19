@@ -1,6 +1,5 @@
 package Model;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Student extends User {
@@ -20,5 +19,18 @@ public class Student extends User {
 
     public void setStudentId(String studentId) {
         this.studentId = studentId;
+    }
+
+    public boolean joinCourse(int courseId) {
+        Course courseToJoin = Course.getCourseById(courseId);
+        if (courseToJoin == null) {
+            return false;
+        }
+        for (Course course : getCourses()) {
+            if (course.getId() == courseId) {
+                return false;
+            }
+        }
+        return true;
     }
 }
