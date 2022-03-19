@@ -5,4 +5,23 @@
     android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfessorMenu"/>
+    tools:context=".ProfessorMenu">
+
+    <Button
+        android:id="@+id/createCourseButton"
+        android:layout_width="188dp"
+        android:layout_height="62dp"
+        android:backgroundTint="@android:color/system_accent1_400"
+        android:text="Create Course"
+        app:iconTint="#2196F3"
+        tools:layout_editor_absoluteX="111dp"
+        tools:layout_editor_absoluteY="230dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="112dp"
+        android:layout_height="20dp"
+        android:text="Professor Panel"
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="92dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
