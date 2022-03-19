@@ -7,7 +7,7 @@ public class Course {
     private String name;
     private int id;
     private Professor professor;
-    private ArrayList<HomeWork> homeWorks;
+    private ArrayList<Homework> homeWorks;
 
     static {
         courses = new ArrayList<>();
@@ -53,11 +53,11 @@ public class Course {
         return professor;
     }
 
-    public ArrayList<HomeWork> getHomeWorks() {
+    public ArrayList<Homework> getHomeWorks() {
         return homeWorks;
     }
 
-    public void addHomeWork(HomeWork homeWork) {
+    public void addHomeWork(Homework homeWork) {
         this.homeWorks.add(homeWork);
     }
 
@@ -66,7 +66,7 @@ public class Course {
         Course.courses = courses;
     }
 
-    public void setHomeWorks(ArrayList<HomeWork> homeWorks) {
+    public void setHomeWorks(ArrayList<Homework> homeWorks) {
 
         this.homeWorks = homeWorks;
     }

@@ -32,4 +32,54 @@ public class Homework {
     public String getStudentAnswer(Student student){
         return studentAnswers.get(student);
     }
+
+    public void setStudentMarks(HashMap<Student, Float> studentMarks) {
+        this.studentMarks = studentMarks;
+    }
+
+    public void setStudentAnswers(HashMap<Student, String> studentAnswers) {
+        this.studentAnswers = studentAnswers;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+
+    public HashMap<Student, String> getStudentAnswers() {
+        return studentAnswers;
+    }
+
+
+    public HashMap<Student, Float> getStudentMarks() {
+        return studentMarks;
+    }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public Course getHomeworkCourse() {
+        return homeworkCourse;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Homework{" +
+                "name='" + name + '\'' +
+                ", question='" + question + '\'' +
+                ", homeworkCourse=" + homeworkCourse +
+                ", studentAnswers=" + studentAnswers +
+                ", studentMarks=" + studentMarks +
+                '}';
+    }
+
+    public void setHomeworkCourse(Course homeworkCourse) {
+        this.homeworkCourse = homeworkCourse;
+    }
+
+    
 }
