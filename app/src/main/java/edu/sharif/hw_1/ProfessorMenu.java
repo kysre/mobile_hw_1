@@ -38,6 +38,8 @@ public class ProfessorMenu extends Fragment {
     }
 
     /**
+     *
+     *
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
@@ -50,6 +52,8 @@ public class ProfessorMenu extends Fragment {
         ProfessorMenu fragment = new ProfessorMenu();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
+
+
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
@@ -75,15 +79,21 @@ public class ProfessorMenu extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button createClassButton = view.findViewById(R.id.createClass);
+//        //Button createClassButton = view.findViewById(R.id.createClass);
+//
+//        createClassButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                NavHostFragment.findNavController(ProfessorMenu.this)
+//                        .navigate(R.id.action_ProfessorMenu_to_CreateClass);
+//
+//            }
+//        });
 
-        createClassButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(ProfessorMenu.this)
-                        .navigate(R.id.action_ProfessorMenu_to_CreateClass);
 
-            }
-        });
+
+
+
+
     }
 }
