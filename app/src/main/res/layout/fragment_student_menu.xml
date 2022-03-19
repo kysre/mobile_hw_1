@@ -11,23 +11,13 @@
     <!-- TODO: Update blank fragment layout -->
 
     <Button
-        android:id="@+id/studentEnterClassButton"
+        android:id="@+id/studentEnterCourseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
         android:text="Enter"
-        app:layout_constraintEnd_toStartOf="@+id/studentJoinClassButton"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/studentJoinClassButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="4dp"
-        android:text="Join"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/studentJoinSwitch"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -48,9 +38,18 @@
         android:ems="10"
         android:hint="Class Id"
         android:inputType="number"
-        app:layout_constraintEnd_toStartOf="@+id/studentEnterClassButton"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toStartOf="@+id/studentEnterCourseButton"
+        app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/studentJoinSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Join"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

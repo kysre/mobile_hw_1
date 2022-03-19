@@ -80,8 +80,8 @@ public class login extends Fragment {
             @Override
             public void onClick(View view) {
 
-//                NavHostFragment.findNavController(login.this).
-//                        navigate(R.id.action_login_to_studentMenu);
+                NavHostFragment.findNavController(login.this).
+                        navigate(R.id.action_login_to_studentMenu);
 
                 if (Controller.loginErrorHandler(username.getText().toString(),
                         password.getText().toString())) {
