@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import edu.sharif.hw_1.databinding.FragmentFirstBinding;
 
-public class CreateClass extends Fragment {
+public class CreateCourse extends Fragment {
 
     private FragmentFirstBinding binding;
 
