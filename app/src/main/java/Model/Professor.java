@@ -9,12 +9,20 @@ public class Professor extends User {
     private String universityName;
 
 
-
     public Professor(String name, String family, String userName, String password
             , String universityName) {
         super(name, family, userName, password);
         this.universityName = universityName;
         allProfessor.add(this);
+    }
+
+    public static boolean isThereProfessor(String username) {
+        for (int i = 0; i < allProfessor.size(); i++) {
+            if (allProfessor.get(i).getUsername().equals(username)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -75,8 +83,26 @@ public class Professor extends User {
 
 
     @Override
-    public void addCourse(Course course) {
-        super.addCourse(course);
+    public void setFirstname(String firstname) {
+        super.setFirstname(firstname);
+    }
+
+    @Override
+    public void setLastname(String lastname) {
+        super.setLastname(lastname);
+    }
+
+
+    @Override
+    public void setPassword(String password) {
+        super.setPassword(password);
+    }
+
+
+    @Override
+    public void setUsername(String username) {
+        super.setUsername(username);
+
     }
 
 

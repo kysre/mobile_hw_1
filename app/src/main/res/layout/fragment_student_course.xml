@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfessorMenu">
+    tools:context=".StudentCourseFragment">
+
 
     <LinearLayout
-        android:id="@+id/professorMenuLinearLayout1"
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -17,53 +17,61 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/createCourseEditText"
-            android:layout_width="281dp"
-            android:layout_height="match_parent"
-            android:hint="Course Name" />
-
-        <Button
-            android:id="@+id/createCourseButton"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/courseNameTextView"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Create" />
+            android:text="Course Name"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/profNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Prof Name"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
     </LinearLayout>
 
+
     <LinearLayout
-        android:id="@+id/professorMenuLinearLayout2"
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:background="?attr/selectableItemBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/professorMenuLinearLayout1">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <EditText
-            android:id="@+id/courseIdEditText"
+            android:id="@+id/homeworkNameEditText"
             android:layout_width="281dp"
             android:layout_height="match_parent"
-            android:hint="Course Id"
-            android:inputType="number"/>
+            android:hint="Homework Name" />
 
         <Button
-            android:id="@+id/professorEnterCourseButton"
+            android:id="@+id/enterHomeworkButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Enter" />
+
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/professorCourseRecyclerView"
+        android:id="@+id/courseHomeworkRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/professorMenuLinearLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

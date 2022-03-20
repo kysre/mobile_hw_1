@@ -17,12 +17,17 @@
         <entry key="..\:/university/term-4/Mobile Programming/homeworks/mobile_hw_1/app/src/main/res/layout/content_main.xml" value="0.22826086956521738" />
         <entry key="..\:/university/term-4/Mobile Programming/homeworks/mobile_hw_1/app/src/main/res/layout/fragment_first.xml" value="0.22826086956521738" />
         <entry key="..\:/university/term-4/Mobile Programming/homeworks/mobile_hw_1/app/src/main/res/layout/fragment_login.xml" value="0.22826086956521738" />
-        <entry key="..\:/university/term-4/Mobile Programming/homeworks/mobile_hw_1/app/src/main/res/layout/fragment_professor_menu.xml" value="0.22826086956521738" />
+        <entry key="..\:/university/term-4/Mobile Programming/homeworks/mobile_hw_1/app/src/main/res/layout/fragment_professor_course.xml" value="0.24094202898550723" />
+        <entry key="..\:/university/term-4/Mobile Programming/homeworks/mobile_hw_1/app/src/main/res/layout/fragment_professor_homework.xml" value="0.25416666666666665" />
+        <entry key="..\:/university/term-4/Mobile Programming/homeworks/mobile_hw_1/app/src/main/res/layout/fragment_professor_menu.xml" value="0.264" />
+        <entry key="..\:/university/term-4/Mobile Programming/homeworks/mobile_hw_1/app/src/main/res/layout/fragment_real_create_course.xml" value="0.24094202898550723" />
+        <entry key="..\:/university/term-4/Mobile Programming/homeworks/mobile_hw_1/app/src/main/res/layout/fragment_register_professor.xml" value="0.25416666666666665" />
         <entry key="..\:/university/term-4/Mobile Programming/homeworks/mobile_hw_1/app/src/main/res/layout/fragment_register_student.xml" value="0.22826086956521738" />
         <entry key="..\:/university/term-4/Mobile Programming/homeworks/mobile_hw_1/app/src/main/res/layout/fragment_registerprofessor.xml" value="0.22826086956521738" />
         <entry key="..\:/university/term-4/Mobile Programming/homeworks/mobile_hw_1/app/src/main/res/layout/fragment_second.xml" value="0.22826086956521738" />
-        <entry key="..\:/university/term-4/Mobile Programming/homeworks/mobile_hw_1/app/src/main/res/layout/fragment_student_homework.xml" value="0.2" />
-        <entry key="..\:/university/term-4/Mobile Programming/homeworks/mobile_hw_1/app/src/main/res/layout/fragment_student_menu.xml" value="0.536" />
+        <entry key="..\:/university/term-4/Mobile Programming/homeworks/mobile_hw_1/app/src/main/res/layout/fragment_student_course.xml" value="0.4" />
+        <entry key="..\:/university/term-4/Mobile Programming/homeworks/mobile_hw_1/app/src/main/res/layout/fragment_student_homework.xml" value="0.4" />
+        <entry key="..\:/university/term-4/Mobile Programming/homeworks/mobile_hw_1/app/src/main/res/layout/fragment_student_menu.xml" value="0.1" />
         <entry key="..\:/university/term-4/Mobile Programming/homeworks/mobile_hw_1/app/src/main/res/layout/recyclerview_row.xml" value="0.25416666666666665" />
         <entry key="..\:/university/term-4/Mobile Programming/homeworks/mobile_hw_1/app/src/main/res/menu/menu_main.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.333786231884058" />
@@ -32,6 +37,7 @@
         <entry key="app/src/main/res/layout/fragment_register_student.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_registerprofessor.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.333786231884058" />
+        <entry key="app/src/main/res/layout/fragment_student_homework.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/register_page.xml" value="0.333786231884058" />
       </map>
     </option>

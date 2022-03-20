@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,7 @@ import android.widget.Toast;
 import Controller.Controller;
 
 
-public class registerProfessor extends Fragment {
+public class RegisterProfessor extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,14 +28,14 @@ public class registerProfessor extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public registerProfessor() {
+    public RegisterProfessor() {
         // Required empty public constructor
     }
 
 
     // TODO: Rename and change types and number of parameters
-    public static registerProfessor newInstance(String param1, String param2) {
-        registerProfessor fragment = new registerProfessor();
+    public static RegisterProfessor newInstance(String param1, String param2) {
+        RegisterProfessor fragment = new RegisterProfessor();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -55,7 +56,7 @@ public class registerProfessor extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_registerprofessor, container, false);
+        return inflater.inflate(R.layout.fragment_register_professor, container, false);
     }
 
     @Override
@@ -79,6 +80,8 @@ public class registerProfessor extends Fragment {
                     Toast toast=Toast.makeText(getContext(),"register was successfully",
                             Toast.LENGTH_SHORT);
                     toast.show();
+                    NavHostFragment.findNavController(RegisterProfessor.this)
+                            .navigate(R.id.action_registerProfessor_to_login);
                 }else{
                     Toast toast=Toast.makeText(getContext(),"this username is already exist",
                             Toast.LENGTH_SHORT);

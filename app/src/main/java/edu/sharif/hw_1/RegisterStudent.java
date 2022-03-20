@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,7 @@ import android.widget.Toast;
 import Controller.Controller;
 
 
-public class registerStudent extends Fragment {
+public class RegisterStudent extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,14 +28,14 @@ public class registerStudent extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public registerStudent() {
+    public RegisterStudent() {
         // Required empty public constructor
     }
 
 
-    public static registerStudent newInstance(String param1, String param2) {
+    public static RegisterStudent newInstance(String param1, String param2) {
 
-        registerStudent fragment = new registerStudent();
+        RegisterStudent fragment = new RegisterStudent();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -73,8 +74,6 @@ public class registerStudent extends Fragment {
 
 
         registerButton.setOnClickListener(new View.OnClickListener() {
-
-
             @Override
             public void onClick(View view) {
                 if (Controller.checkUsernameForRegister(username.getText().toString())) {
@@ -86,6 +85,8 @@ public class registerStudent extends Fragment {
                         Toast toast = Toast.makeText(getContext(), "register account was " +
                                 "successfully", Toast.LENGTH_SHORT);
                         toast.show();
+                        NavHostFragment.findNavController(RegisterStudent.this)
+                                .navigate(R.id.action_registerStudent_to_login);
                     } else {
                         Toast toast = Toast.makeText(getContext(), "student number should contains only" +
                                 "numbers", Toast.LENGTH_SHORT);

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StudentHomeworkFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ProfessorCourseFragment">
 
     <LinearLayout
-        android:id="@+id/studentHomeworkLinearLayout"
+        android:id="@+id/profCourseLinearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -17,71 +17,66 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/profCourseNameInHomeworkTextView"
+            android:id="@+id/profCourseNameTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Course Name"
             android:textColor="@color/black"
-            android:textSize="24sp" />
+            android:textSize="22sp" />
 
         <TextView
-            android:id="@+id/profHomeworkNameTextView"
+            android:id="@+id/profProfNameTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Homework Name"
+            android:text="Prof Name"
             android:textColor="@color/black"
-            android:textSize="24sp" />
+            android:textSize="22sp" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/profHomeworkQuestionTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="Question"
-        android:textColor="@color/black"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentHomeworkLinearLayout" />
-
-    <TextView
-        android:id="@+id/homeworkAnswerTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="No previous answer"
-        android:textColor="#80000000"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profHomeworkQuestionTextView" />
-
-
     <EditText
-        android:id="@+id/homeworkAnswerEditText"
-        style="@android:style/Widget.Material.EditText"
-        android:layout_width="0dp"
+        android:id="@+id/homeworkNameEditText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:ems="10"
-        android:hint="Answer"
         android:inputType="textPersonName"
-        android:textSize="22sp"
+        android:hint="New Homework Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeworkAnswerTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/profCourseLinearLayout1" />
 
-    <Button
-        android:id="@+id/answerSubmitButton"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/homeworkQuestionEditText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="Submit"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Question"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeworkAnswerEditText" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeworkNameEditText" />
+
+    <Button
+        android:id="@+id/createHomeworkButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Homework"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeworkQuestionEditText" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profCourseHomeworkRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createHomeworkButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
