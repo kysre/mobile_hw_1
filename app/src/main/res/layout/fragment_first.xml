@@ -8,11 +8,11 @@
 
     <TextView
         android:id="@+id/textview_first"
-        android:layout_width="416dp"
-        android:layout_height="49dp"
+        android:layout_width="380dp"
+        android:layout_height="62dp"
         android:fontFamily="serif-monospace"
         android:text="welcome to Quera"
-        android:textAlignment="textEnd"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColorHighlight="@color/black"
         android:textColorLink="@color/black"
@@ -67,6 +67,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mobile_HW_1"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="696dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.949" />
 </androidx.constraintlayout.widget.ConstraintLayout>
