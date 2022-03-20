@@ -58,7 +58,6 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                // TODO: fix RecyclerView update
                 if (isChecked) {
                     enterButton.setText("Join");
                     listItems.clear();
@@ -77,38 +76,45 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
             @Override
             public void onClick(View view) {
                 boolean isEnter = enterButton.getText().toString().equals("Enter");
-                int courseId = Integer.parseInt(classIdTextView.getText().toString());
-                if (isEnter) {
-                    String courseName = Controller.getCourseNameById(courseId);
-                    if (courseName != null) {
-                        boolean isCourseJoined = Controller.isCourseJoinedByOnlineUser(courseName);
-                        if (isCourseJoined) {
-                            NavHostFragment.findNavController(StudentMenu.this)
-                                    .navigate(StudentMenuDirections
-                                            .actionStudentMenuToCourseFragment(courseName));
+                String courseIdStr = classIdTextView.getText().toString();
+                if (!courseIdStr.equals("")) {
+                    int courseId = Integer.parseInt(courseIdStr);
+                    if (isEnter) {
+                        String courseName = Controller.getCourseNameById(courseId);
+                        if (courseName != null) {
+                            boolean isCourseJoined = Controller.isCourseJoinedByOnlineUser(courseName);
+                            if (isCourseJoined) {
+                                NavHostFragment.findNavController(StudentMenu.this)
+                                        .navigate(StudentMenuDirections
+                                                .actionStudentMenuToCourseFragment(courseName));
+                            } else {
+                                Toast toast = Toast.makeText(getContext(),
+                                        "You haven't joined this course!", Toast.LENGTH_LONG);
+                                toast.show();
+                            }
                         } else {
                             Toast toast = Toast.makeText(getContext(),
-                                    "You haven't joined this course!", Toast.LENGTH_LONG);
+                                    "Course Id was wrong!", Toast.LENGTH_LONG);
                             toast.show();
                         }
                     } else {
-                        Toast toast = Toast.makeText(getContext(),
-                                "Course Id was wrong!", Toast.LENGTH_LONG);
-                        toast.show();
+                        if (Controller.joinCourse(courseId)) {
+                            Toast toast = Toast.makeText(getContext(),
+                                    "Course joined Successfully!", Toast.LENGTH_LONG);
+                            toast.show();
+                            listItems.clear();
+                            listItems.addAll(Controller.getNotJoinedCourseListItems());
+                            adapter.notifyDataSetChanged();
+                        } else {
+                            Toast toast = Toast.makeText(getContext(),
+                                    "Unable to join course!", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
                     }
                 } else {
-                    if (Controller.joinCourse(courseId)) {
-                        Toast toast = Toast.makeText(getContext(),
-                                "Course joined Successfully!", Toast.LENGTH_LONG);
-                        toast.show();
-                        listItems.clear();
-                        listItems.addAll(Controller.getNotJoinedCourseListItems());
-                        adapter.notifyDataSetChanged();
-                    } else {
-                        Toast toast = Toast.makeText(getContext(),
-                                "Unable to join course!", Toast.LENGTH_LONG);
-                        toast.show();
-                    }
+                    Toast toast = Toast.makeText(getContext(),
+                            "Please enter a valid Id!", Toast.LENGTH_LONG);
+                    toast.show();
                 }
             }
         });

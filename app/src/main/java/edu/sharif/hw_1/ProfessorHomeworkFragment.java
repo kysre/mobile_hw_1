@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -55,6 +57,7 @@ public class ProfessorHomeworkFragment extends Fragment implements RecyclerViewA
         homeworkNameTextView.setText(homeworkName);
         questionTextView.setText(Controller.getHomeworkQuestion(courseName, homeworkName));
 
+        studentMarksRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         listItems = new ArrayList<>();
         listItems.addAll(Controller.getStudentMarksItemList(courseName, homeworkName));
         adapter = new RecyclerViewAdapter(getActivity(), listItems, this);
@@ -81,6 +84,10 @@ public class ProfessorHomeworkFragment extends Fragment implements RecyclerViewA
 
     @Override
     public void onItemClicked(RecyclerViewAdapter.ListItem listItem) {
-        // TODO: go to student marking page
+        String studentUsername = listItem.getLeftString();
+        NavHostFragment.findNavController(ProfessorHomeworkFragment.this)
+                .navigate(ProfessorHomeworkFragmentDirections
+                        .actionProfessorHomeworkFragmentToProfessorMarkingFragment
+                                (courseName, homeworkName, studentUsername));
     }
 }

@@ -62,7 +62,8 @@ public class StudentHomeworkFragment extends Fragment {
                             "Answer submitted successfully!", Toast.LENGTH_LONG);
                     toast.show();
                     NavHostFragment.findNavController(StudentHomeworkFragment.this)
-                            .navigate(R.id.action_studentHomeworkFragment_to_studentCourseFragment);
+                            .navigate(StudentHomeworkFragmentDirections
+                                    .actionStudentHomeworkFragmentToStudentCourseFragment(courseName));
                 } else {
                     Toast toast = Toast.makeText(getContext(),
                             "An error occurred!", Toast.LENGTH_LONG);

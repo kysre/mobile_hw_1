@@ -86,7 +86,6 @@ public class Controller {
     }
 
     public static boolean joinCourse(int courseId) {
-
         if (onlineUser instanceof Student) {
             return ((Student) onlineUser).joinCourse(courseId);
         }
@@ -141,8 +140,7 @@ public class Controller {
         Homework homework = Course.getCourseByName(courseName).getHomeworkByName(homeworkName);
         if (onlineUser instanceof Student && homework != null) {
             Student student = (Student) onlineUser;
-            Course.getCourseByName(courseName).getHomeworkByName(homeworkName)
-                    .setStudentAnswer(student, answer);
+            homework.setStudentAnswer(student, answer);
             return true;
         }
         return false;
