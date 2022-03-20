@@ -83,8 +83,6 @@ public class Controller {
         return false;
 
 
-
-
     }
 
     public static boolean joinCourse(int courseId) {
@@ -181,12 +179,10 @@ public class Controller {
         for (Student student : students) {
             if (studentMarksMap.containsKey(student)) {
                 studentMarksItemList.add(new RecyclerViewAdapter.ListItem
-                        (student.getFirstname() + " " + student.getLastname()
-                                , String.valueOf(studentMarksMap.get(student))));
+                        (student.getUsername(), String.valueOf(studentMarksMap.get(student))));
             } else {
                 studentMarksItemList.add(new RecyclerViewAdapter.ListItem
-                        (student.getFirstname() + " " + student.getLastname()
-                                , "-"));
+                        (student.getUsername(), "-"));
 
             }
         }
@@ -205,4 +201,27 @@ public class Controller {
         return false;
     }
 
+    public static String getStudentMark(String courseName, String homeworkName, String studentUsername) {
+        Homework homework = Course.getCourseByName(courseName).getHomeworkByName(homeworkName);
+        Student student = (Student) Student.getUserByUsername(studentUsername);
+        HashMap<Student, Float> studentMarks = homework.getStudentMarks();
+        if (studentMarks.containsKey(student)) {
+            return String.valueOf(studentMarks.get(student));
+        } else {
+            return null;
+        }
+    }
+
+    public static String getStudentAnswer(String courseName, String homeworkName, String studentUsername) {
+        Homework homework = Course.getCourseByName(courseName).getHomeworkByName(homeworkName);
+        Student student = (Student) Student.getUserByUsername(studentUsername);
+        HashMap<Student, String> studentAnswers = homework.getStudentAnswers();
+        return studentAnswers.getOrDefault(student, "No Answer!");
+    }
+
+    public static void setMark(String courseName, String homeworkName, String studentUsername, float mark) {
+        Homework homework = Course.getCourseByName(courseName).getHomeworkByName(homeworkName);
+        Student student = (Student) Student.getUserByUsername(studentUsername);
+        homework.setStudentMark(student, mark);
+    }
 }

@@ -131,5 +131,26 @@
         <argument
             android:name="homeworkName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_professorHomeworkFragment_to_professorMarkingFragment"
+            app:destination="@id/professorMarkingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/professorMarkingFragment"
+        android:name="edu.sharif.hw_1.ProfessorMarkingFragment"
+        android:label="fragment_professor_marking"
+        tools:layout="@layout/fragment_professor_marking" >
+        <action
+            android:id="@+id/action_professorMarkingFragment_to_professorHomeworkFragment"
+            app:destination="@id/professorHomeworkFragment" />
+        <argument
+            android:name="courseName"
+            app:argType="string" />
+        <argument
+            android:name="homeworkName"
+            app:argType="string" />
+        <argument
+            android:name="studentName"
+            app:argType="string" />
     </fragment>
 </navigation>

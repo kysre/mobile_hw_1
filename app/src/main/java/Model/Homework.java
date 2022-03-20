@@ -33,8 +33,8 @@ public class Homework {
         return studentAnswers.get(student);
     }
 
-    public void setStudentMarks(HashMap<Student, Float> studentMarks) {
-        this.studentMarks = studentMarks;
+    public void setStudentMark(Student student, float mark) {
+        studentMarks.put(student, mark);
     }
 
     public void setStudentAnswers(HashMap<Student, String> studentAnswers) {
