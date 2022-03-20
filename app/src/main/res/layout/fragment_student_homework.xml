@@ -48,6 +48,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/studentHomeworkLinearLayout" />
 
+    <TextView
+        android:id="@+id/homeworkAnswerTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="No previous answer"
+        android:textColor="#80000000"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeworkQuestionTextView" />
+
+
     <EditText
         android:id="@+id/homeworkAnswerEditText"
         style="@android:style/Widget.Material.EditText"
@@ -60,7 +73,7 @@
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeworkQuestionTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/homeworkAnswerTextView" />
 
     <Button
         android:id="@+id/answerSubmitButton"

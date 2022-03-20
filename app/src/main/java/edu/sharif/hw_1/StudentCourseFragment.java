@@ -49,30 +49,34 @@ public class StudentCourseFragment extends Fragment implements RecyclerViewAdapt
 
         courseName = StudentCourseFragmentArgs.fromBundle(getArguments()).getCourseName();
         courseTextView.setText(courseName);
-//        profTextView.setText(Controller.getCourseProfessorName(courseName));
+        profTextView.setText(Controller.getCourseProfessorName(courseName));
 
         homeworkRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        homeworkItemList = new ArrayList<>();
-
-        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-1", ""));
-        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-2", ""));
-        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-3", ""));
-        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-4", ""));
-        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-5", ""));
-        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-6", ""));
-        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-7", ""));
-
+        homeworkItemList = Controller.getHomeworkListItems(courseName);
+//        homeworkItemList = new ArrayList<>();
+//        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-1", ""));
+//        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-2", ""));
+//        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-3", ""));
+//        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-4", ""));
+//        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-5", ""));
+//        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-6", ""));
+//        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-7", ""));
         adapter = new RecyclerViewAdapter(getActivity(), homeworkItemList, this);
         homeworkRecyclerView.setAdapter(adapter);
-
 
         enterHomeworkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String homeworkName = homeworkNameEditText.getText().toString();
-                NavHostFragment.findNavController(StudentCourseFragment.this)
-                        .navigate(StudentCourseFragmentDirections
-                                .actionStudentCourseToHomeworkFragment(courseName, homeworkName));
+                if (Controller.getHomeworkQuestion(courseName, homeworkName) != null) {
+                    NavHostFragment.findNavController(StudentCourseFragment.this)
+                            .navigate(StudentCourseFragmentDirections
+                                    .actionStudentCourseToHomeworkFragment(courseName, homeworkName));
+                } else {
+                    Toast toast = Toast.makeText(getContext(),
+                            "Homework name is invalid!", Toast.LENGTH_LONG);
+                    toast.show();
+                }
             }
         });
     }

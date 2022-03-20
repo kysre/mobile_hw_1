@@ -49,17 +49,14 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
         courseRecyclerView = view.findViewById(R.id.studentCourseRecyclerView);
         courseRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        // TODO: fix courseList
-//        listItems = Controller.getCourseListItems();
-
-        listItems = new ArrayList<>();
-        listItems.add(new RecyclerViewAdapter.ListItem("course-1", "40085"));
-        listItems.add(new RecyclerViewAdapter.ListItem("course-2", "40095"));
-        listItems.add(new RecyclerViewAdapter.ListItem("course-3", "21085"));
-        listItems.add(new RecyclerViewAdapter.ListItem("course-4", "20085"));
-        listItems.add(new RecyclerViewAdapter.ListItem("course-5", "33085"));
-        listItems.add(new RecyclerViewAdapter.ListItem("course-6", "12085"));
-
+        listItems = Controller.getCourseListItems();
+//        listItems = new ArrayList<>();
+//        listItems.add(new RecyclerViewAdapter.ListItem("course-1", "40085"));
+//        listItems.add(new RecyclerViewAdapter.ListItem("course-2", "40095"));
+//        listItems.add(new RecyclerViewAdapter.ListItem("course-3", "21085"));
+//        listItems.add(new RecyclerViewAdapter.ListItem("course-4", "20085"));
+//        listItems.add(new RecyclerViewAdapter.ListItem("course-5", "33085"));
+//        listItems.add(new RecyclerViewAdapter.ListItem("course-6", "12085"));
         adapter = new RecyclerViewAdapter(getActivity(), listItems, this);
         courseRecyclerView.setAdapter(adapter);
 
@@ -67,6 +64,7 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                // TODO: fix RecyclerView update
                 if (isChecked) {
                     enterButton.setText("Join");
                     listItems = Controller.getNotJoinedCourseListItems();

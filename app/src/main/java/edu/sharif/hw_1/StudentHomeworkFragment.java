@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import Controller.Controller;
 
@@ -21,6 +22,7 @@ public class StudentHomeworkFragment extends Fragment {
     TextView courseNameTextView;
     TextView homeworkNameTextView;
     TextView questionTextView;
+    TextView answerTextView;
     EditText answerEditText;
     Button submitButton;
 
@@ -39,6 +41,7 @@ public class StudentHomeworkFragment extends Fragment {
         courseNameTextView = view.findViewById(R.id.courseNameInHomeworkTextView);
         homeworkNameTextView = view.findViewById(R.id.homeworkNameTextView);
         questionTextView = view.findViewById(R.id.homeworkQuestionTextView);
+        answerTextView = view.findViewById(R.id.homeworkAnswerTextView);
         answerEditText = view.findViewById(R.id.homeworkAnswerEditText);
         submitButton = view.findViewById(R.id.answerSubmitButton);
 
@@ -46,7 +49,8 @@ public class StudentHomeworkFragment extends Fragment {
         homeworkName = StudentHomeworkFragmentArgs.fromBundle(getArguments()).getHomeworkName();
         courseNameTextView.setText(courseName);
         homeworkNameTextView.setText(homeworkName);
-//        questionTextView.setText(Controller.getHomeworkQuestion(courseName, homeworkName));
+        questionTextView.setText(Controller.getHomeworkQuestion(courseName, homeworkName));
+        answerTextView.setText(Controller.getPreviousAnswer(courseName, homeworkName));
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +61,8 @@ public class StudentHomeworkFragment extends Fragment {
                     Toast toast = Toast.makeText(getContext(),
                             "Answer submitted successfully!", Toast.LENGTH_LONG);
                     toast.show();
+                    NavHostFragment.findNavController(StudentHomeworkFragment.this)
+                            .navigate(R.id.action_studentHomeworkFragment_to_studentCourseFragment);
                 } else {
                     Toast toast = Toast.makeText(getContext(),
                             "An error occurred!", Toast.LENGTH_LONG);

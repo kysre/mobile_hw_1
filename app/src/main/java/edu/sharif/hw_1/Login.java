@@ -17,7 +17,7 @@ import android.widget.Toast;
 import Controller.Controller;
 
 
-public class login extends Fragment {
+public class Login extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,13 +28,13 @@ public class login extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public login() {
+    public Login() {
         // Required empty public constructor
     }
 
 
-    public static login newInstance(String param1, String param2) {
-        login fragment = new login();
+    public static Login newInstance(String param1, String param2) {
+        Login fragment = new Login();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -69,20 +69,16 @@ public class login extends Fragment {
             public void onClick(View view) {
                 if (Controller.loginErrorHandler(username.getText().toString(), password.getText().toString())) {
                     if (!Controller.checkForLogin(username.getText().toString())) {
-                        NavHostFragment.findNavController(login.this).
+                        NavHostFragment.findNavController(Login.this).
                                 navigate(R.id.action_login_to_studentMenu);
                     } else {
-                        NavHostFragment.findNavController(login.this).
+                        NavHostFragment.findNavController(Login.this).
                                 navigate(R.id.action_login_to_professorMenu);
-
                     }
-                    Controller.setOnlineUser(username.getText().toString());
                 } else {
                     Toast toast = Toast.makeText(getContext(), "username or password is not valid", Toast.LENGTH_SHORT);
                     toast.show();
                 }
-
-
             }
         });
     }
