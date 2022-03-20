@@ -70,9 +70,9 @@ public class Course {
         Course.courses = courses;
     }
 
-    public void setHomeWorks(ArrayList<HomeWork> homeWorks) {
+    public void setHomeWorks(ArrayList<Homework> homeWorks) {
 
-        this.homeWorks = homeWorks;
+        this.homework = homeWorks;
     }
 
     public void setId(int id) {
