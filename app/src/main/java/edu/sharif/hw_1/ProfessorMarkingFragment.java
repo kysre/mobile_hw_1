@@ -1,0 +1,80 @@
+package edu.sharif.hw_1;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import Controller.Controller;
+
+public class ProfessorMarkingFragment extends Fragment {
+    private String courseName;
+    private String homeworkName;
+    private String studentUsername;
+    TextView homeworkNameTextView;
+    TextView studentNameTextView;
+    TextView questionTextView;
+    TextView answerTextView;
+    TextView markTextView;
+    EditText markEditText;
+    Button markButton;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_professor_marking, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        homeworkNameTextView = view.findViewById(R.id.profHomeworkNameInMarkingTextView);
+        studentNameTextView = view.findViewById(R.id.profStudentNameTextView);
+        questionTextView = view.findViewById(R.id.profHomeworkMarkingQuestionTextView);
+        answerTextView = view.findViewById(R.id.profAnswerMarkingTextView);
+        markTextView = view.findViewById(R.id.profStudentMarkTextView);
+        markEditText = view.findViewById(R.id.newMarkEditText);
+        markButton = view.findViewById(R.id.markButton);
+
+        courseName = ProfessorMarkingFragmentArgs.fromBundle(getArguments()).getCourseName();
+        homeworkName = ProfessorMarkingFragmentArgs.fromBundle(getArguments()).getHomeworkName();
+        studentUsername = ProfessorMarkingFragmentArgs.fromBundle(getArguments()).getStudentName();
+
+        homeworkNameTextView.setText(homeworkName);
+        studentNameTextView.setText(studentUsername);
+        questionTextView.setText(Controller.getHomeworkQuestion(courseName, homeworkName));
+        answerTextView.setText(Controller.getStudentAnswer(courseName, homeworkName, studentUsername));
+        markTextView.setText(Controller.getStudentMark(courseName, homeworkName, studentUsername));
+
+        markButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String newMarkStr = markEditText.getText().toString();
+                if (!newMarkStr.equals("")) {
+                    float newMark = Float.parseFloat(newMarkStr);
+                    Controller.setMark(courseName, homeworkName, studentUsername, newMark);
+                    Toast toast = Toast.makeText(getContext(),
+                            "Marked successfully!", Toast.LENGTH_LONG);
+                    toast.show();
+                    markTextView.setText(String.valueOf(newMark));
+                    markEditText.setText("");
+                } else {
+                    Toast toast = Toast.makeText(getContext(),
+                            "Please enter a valid mark!", Toast.LENGTH_LONG);
+                    toast.show();
+                }
+            }
+        });
+
+    }
+}
