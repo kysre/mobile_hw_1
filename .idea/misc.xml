@@ -31,6 +31,7 @@
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/fragment_professor_menu.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/fragment_real_create_course.xml" value="0.333786231884058" />
         <entry key="app/src/main/res/layout/fragment_register_student.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_registerprofessor.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.333786231884058" />

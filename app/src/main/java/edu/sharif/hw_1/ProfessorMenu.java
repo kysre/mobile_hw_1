@@ -66,7 +66,14 @@ public class ProfessorMenu extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-
+        Button button=view.findViewById(R.id.createCourseButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(ProfessorMenu.this).
+                        navigate(R.id.action_professorMenu_to_realCreateCourse);
+            }
+        });
 
 
 

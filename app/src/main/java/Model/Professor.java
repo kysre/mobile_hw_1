@@ -18,6 +18,15 @@ public class Professor extends User {
         allProfessor.add(this);
     }
 
+    public static boolean isThereProfessor(String username){
+        for(int i=0;i<allProfessor.size();i++){
+            if(allProfessor.get(i).getUsername().equals(username)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public String getFirstname() {
         return super.getFirstname();
