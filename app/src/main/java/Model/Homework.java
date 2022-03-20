@@ -69,6 +69,9 @@ public class Homework {
         return homeworkCourse;
     }
 
+    public void rename(String newName) {
+        this.name = newName;
+    }
 
     @Override
     public String toString() {

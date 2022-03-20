@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -98,6 +99,10 @@ public class ProfessorCourseFragment extends Fragment implements RecyclerViewAda
 
     @Override
     public void onItemClicked(RecyclerViewAdapter.ListItem listItem) {
-        // TODO: go to homework page
+        String homeworkName = listItem.getLeftString();
+        NavHostFragment.findNavController(ProfessorCourseFragment.this)
+                .navigate(ProfessorCourseFragmentDirections
+                        .actionProfessorCourseFragmentToProfessorHomeworkFragment
+                                (courseName, homeworkName));
     }
 }
