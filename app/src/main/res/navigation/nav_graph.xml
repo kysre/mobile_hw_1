@@ -12,9 +12,6 @@
         tools:layout="@layout/fragment_first">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-        <action
             android:id="@+id/action_FirstFragment_to_registerProfessor"
             app:destination="@id/registerProfessor" />
         <action
@@ -25,32 +22,22 @@
             app:destination="@id/login" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="edu.sharif.hw_1.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/registerProfessor"
-        android:name="edu.sharif.hw_1.registerProfessor"
+        android:name="edu.sharif.hw_1.RegisterProfessor"
         android:label="fragment_registerprofessor"
-        tools:layout="@layout/fragment_registerprofessor" >
+        tools:layout="@layout/fragment_register_professor" >
         <action
             android:id="@+id/action_registerProfessor_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerStudent"
-        android:name="edu.sharif.hw_1.registerStudent"
+        android:name="edu.sharif.hw_1.RegisterStudent"
         android:label="fragment_register_student"
         tools:layout="@layout/fragment_register_student" />
     <fragment
         android:id="@+id/login"
-        android:name="edu.sharif.hw_1.login"
+        android:name="edu.sharif.hw_1.Login"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -68,6 +55,9 @@
         <action
             android:id="@+id/action_student_menu_to_course_fragment"
             app:destination="@id/studentCourseFragment2" />
+        <action
+            android:id="@+id/action_studentMenu_to_login"
+            app:destination="@id/login" />
     </fragment>
     <fragment
         android:id="@+id/professorMenu"
@@ -89,6 +79,9 @@
         <action
             android:id="@+id/action_student_course_to_homework_fragment"
             app:destination="@id/studentHomeworkFragment" />
+        <action
+            android:id="@+id/action_studentCourseFragment2_to_studentMenu"
+            app:destination="@id/studentMenu" />
     </fragment>
     <fragment
         android:id="@+id/studentHomeworkFragment"
@@ -101,10 +94,13 @@
         <argument
             android:name="homeworkName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_studentHomeworkFragment_to_studentCourseFragment"
+            app:destination="@id/studentCourseFragment2" />
     </fragment>
     <fragment
         android:id="@+id/realCreateCourse"
-        android:name="edu.sharif.hw_1.realCreateCourse"
+        android:name="edu.sharif.hw_1.RealCreateCourse"
         android:label="fragment_real_create_course"
         tools:layout="@layout/fragment_real_create_course" />
 </navigation>

@@ -109,10 +109,29 @@ public class Controller {
         return onlineUser.isCourseJoined(Course.getCourseByName(courseName));
     }
 
+    public static ArrayList<RecyclerViewAdapter.ListItem> getHomeworkListItems(String courseName) {
+        ArrayList<Homework> homeworks = Course.getCourseByName(courseName).getHomeworks();
+        ArrayList<RecyclerViewAdapter.ListItem> listItems = new ArrayList<>();
+        for (Homework homework : homeworks) {
+            listItems.add(new RecyclerViewAdapter.ListItem(homework.getName(), ""));
+        }
+        return listItems;
+    }
+
     public static String getHomeworkQuestion(String courseName, String homeworkName) {
         Homework homework = Course.getCourseByName(courseName).getHomeworkByName(homeworkName);
         if (homework != null) {
             return homework.getQuestion();
+        }
+        return null;
+    }
+
+    public static String getPreviousAnswer(String courseName, String homeworkName) {
+        Homework homework = Course.getCourseByName(courseName).getHomeworkByName(homeworkName);
+        if (homework != null) {
+            if (onlineUser instanceof Student) {
+                return homework.getStudentAnswer((Student) onlineUser);
+            }
         }
         return null;
     }
@@ -128,12 +147,8 @@ public class Controller {
         return false;
     }
 
-    public static void createNewCourse(String courseName , Professor professor){
-        Course course = new Course(courseName,professor);
+    public static void createNewCourse(String courseName, Professor professor) {
+        Course course = new Course(courseName, professor);
         professor.addCourse(course);
-    }
-
-    public static void setOnlineUser(String username){
-        User.onlineUser=User.getUserByUsername(username);
     }
 }

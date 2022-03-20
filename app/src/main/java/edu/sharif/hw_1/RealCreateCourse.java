@@ -18,10 +18,10 @@ import Model.User;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link realCreateCourse#newInstance} factory method to
+ * Use the {@link RealCreateCourse#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class realCreateCourse extends Fragment {
+public class RealCreateCourse extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,7 +32,7 @@ public class realCreateCourse extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public realCreateCourse() {
+    public RealCreateCourse() {
         // Required empty public constructor
     }
 
@@ -45,8 +45,8 @@ public class realCreateCourse extends Fragment {
      * @return A new instance of fragment realCreateCourse.
      */
     // TODO: Rename and change types and number of parameters
-    public static realCreateCourse newInstance(String param1, String param2) {
-        realCreateCourse fragment = new realCreateCourse();
+    public static RealCreateCourse newInstance(String param1, String param2) {
+        RealCreateCourse fragment = new RealCreateCourse();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
