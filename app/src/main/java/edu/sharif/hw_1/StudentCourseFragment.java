@@ -52,15 +52,8 @@ public class StudentCourseFragment extends Fragment implements RecyclerViewAdapt
         profTextView.setText(Controller.getCourseProfessorName(courseName));
 
         homeworkRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        homeworkItemList = Controller.getHomeworkListItems(courseName);
-//        homeworkItemList = new ArrayList<>();
-//        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-1", ""));
-//        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-2", ""));
-//        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-3", ""));
-//        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-4", ""));
-//        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-5", ""));
-//        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-6", ""));
-//        homeworkItemList.add(new RecyclerViewAdapter.ListItem("HW-7", ""));
+        homeworkItemList = new ArrayList<>();
+        homeworkItemList.addAll(Controller.getHomeworkListItems(courseName));
         adapter = new RecyclerViewAdapter(getActivity(), homeworkItemList, this);
         homeworkRecyclerView.setAdapter(adapter);
 
