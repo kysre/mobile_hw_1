@@ -49,14 +49,8 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
         courseRecyclerView = view.findViewById(R.id.studentCourseRecyclerView);
         courseRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        listItems = Controller.getCourseListItems();
-//        listItems = new ArrayList<>();
-//        listItems.add(new RecyclerViewAdapter.ListItem("course-1", "40085"));
-//        listItems.add(new RecyclerViewAdapter.ListItem("course-2", "40095"));
-//        listItems.add(new RecyclerViewAdapter.ListItem("course-3", "21085"));
-//        listItems.add(new RecyclerViewAdapter.ListItem("course-4", "20085"));
-//        listItems.add(new RecyclerViewAdapter.ListItem("course-5", "33085"));
-//        listItems.add(new RecyclerViewAdapter.ListItem("course-6", "12085"));
+        listItems = new ArrayList<>();
+        listItems.addAll(Controller.getCourseListItems());
         adapter = new RecyclerViewAdapter(getActivity(), listItems, this);
         courseRecyclerView.setAdapter(adapter);
 
@@ -67,10 +61,12 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
                 // TODO: fix RecyclerView update
                 if (isChecked) {
                     enterButton.setText("Join");
-                    listItems = Controller.getNotJoinedCourseListItems();
+                    listItems.clear();
+                    listItems.addAll(Controller.getNotJoinedCourseListItems());
                 } else {
                     enterButton.setText("Enter");
-                    listItems = Controller.getCourseListItems();
+                    listItems.clear();
+                    listItems.addAll(Controller.getCourseListItems());
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -105,7 +101,8 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
                         Toast toast = Toast.makeText(getContext(),
                                 "Course joined Successfully!", Toast.LENGTH_LONG);
                         toast.show();
-                        listItems = Controller.getNotJoinedCourseListItems();
+                        listItems.clear();
+                        listItems.addAll(Controller.getNotJoinedCourseListItems());
                         adapter.notifyDataSetChanged();
                     } else {
                         Toast toast = Toast.makeText(getContext(),

@@ -63,11 +63,7 @@
         android:id="@+id/professorMenu"
         android:name="edu.sharif.hw_1.ProfessorMenu"
         android:label="fragment_professor_menu"
-        tools:layout="@layout/fragment_professor_menu" >
-        <action
-            android:id="@+id/action_professorMenu_to_realCreateCourse"
-            app:destination="@id/realCreateCourse" />
-    </fragment>
+        tools:layout="@layout/fragment_professor_menu" />
     <fragment
         android:id="@+id/studentCourseFragment2"
         android:name="edu.sharif.hw_1.StudentCourseFragment"
@@ -98,9 +94,4 @@
             android:id="@+id/action_studentHomeworkFragment_to_studentCourseFragment"
             app:destination="@id/studentCourseFragment2" />
     </fragment>
-    <fragment
-        android:id="@+id/realCreateCourse"
-        android:name="edu.sharif.hw_1.RealCreateCourse"
-        android:label="fragment_real_create_course"
-        tools:layout="@layout/fragment_real_create_course" />
 </navigation>

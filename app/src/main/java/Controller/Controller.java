@@ -147,8 +147,15 @@ public class Controller {
         return false;
     }
 
-    public static void createNewCourse(String courseName, Professor professor) {
-        Course course = new Course(courseName, professor);
-        professor.addCourse(course);
+    public static boolean createNewCourse(String courseName) {
+        if (onlineUser instanceof Professor) {
+            Professor professor = (Professor) onlineUser;
+            if (Course.getCourseByName(courseName) == null) {
+                Course course = new Course(courseName, professor);
+                professor.addCourse(course);
+                return true;
+            }
+        }
+        return false;
     }
 }

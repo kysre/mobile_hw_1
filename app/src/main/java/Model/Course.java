@@ -29,7 +29,6 @@ public class Course {
                 return course;
             }
         }
-
         return null;
     }
 
