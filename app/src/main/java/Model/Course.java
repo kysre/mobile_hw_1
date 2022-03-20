@@ -9,6 +9,7 @@ public class Course {
     private static int recentId = 50000;
     private Professor professor;
     private ArrayList<Homework> homeworks;
+    private ArrayList<Student> students;
 
     static {
         courses = new ArrayList<>();
@@ -21,6 +22,7 @@ public class Course {
         courses.add(this);
         recentId += 1;
         homeworks = new ArrayList<>();
+        students = new ArrayList<>();
     }
 
     public static Course getCourseByName(String name) {
@@ -98,5 +100,12 @@ public class Course {
         this.id = id;
     }
 
+    public void addStudent(Student student) {
+        students.add(student);
+    }
 
+    public ArrayList<Student> getCourseStudents() {
+        return students;
+    }
+    
 }

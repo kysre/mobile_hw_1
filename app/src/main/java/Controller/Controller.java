@@ -1,6 +1,7 @@
 package Controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import Model.Course;
 import Model.Homework;
@@ -166,6 +167,40 @@ public class Controller {
         if (course != null && !course.doesHomeworkExist(name)) {
             course.addHomework(name, question);
             return true;
+        }
+        return false;
+    }
+
+    public static ArrayList<RecyclerViewAdapter.ListItem> getStudentMarksItemList
+            (String courseName, String homeworkName) {
+        Course course = Course.getCourseByName(courseName);
+        Homework homework = course.getHomeworkByName(homeworkName);
+        ArrayList<Student> students = course.getCourseStudents();
+        HashMap<Student, Float> studentMarksMap = homework.getStudentMarks();
+        ArrayList<RecyclerViewAdapter.ListItem> studentMarksItemList = new ArrayList<>();
+        for (Student student : students) {
+            if (studentMarksMap.containsKey(student)) {
+                studentMarksItemList.add(new RecyclerViewAdapter.ListItem
+                        (student.getFirstname() + " " + student.getLastname()
+                                , String.valueOf(studentMarksMap.get(student))));
+            } else {
+                studentMarksItemList.add(new RecyclerViewAdapter.ListItem
+                        (student.getFirstname() + " " + student.getLastname()
+                                , "-"));
+
+            }
+        }
+        return studentMarksItemList;
+    }
+
+    public static boolean renameHomework(String courseName, String homeworkName, String newName) {
+        Course course = Course.getCourseByName(courseName);
+        Homework homework = course.getHomeworkByName(homeworkName);
+        if (!newName.equals("")) {
+            if (course.getHomeworkByName(newName) == null) {
+                homework.rename(newName);
+                return true;
+            }
         }
         return false;
     }

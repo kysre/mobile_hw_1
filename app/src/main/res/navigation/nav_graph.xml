@@ -113,5 +113,23 @@
         <action
             android:id="@+id/action_professorCourseFragment_to_professorMenu"
             app:destination="@id/professorMenu" />
+        <action
+            android:id="@+id/action_professorCourseFragment_to_professorHomeworkFragment"
+            app:destination="@id/professorHomeworkFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/professorHomeworkFragment"
+        android:name="edu.sharif.hw_1.ProfessorHomeworkFragment"
+        android:label="fragment_professor_homework"
+        tools:layout="@layout/fragment_professor_homework" >
+        <action
+            android:id="@+id/action_professorHomeworkFragment_to_professorCourseFragment"
+            app:destination="@id/professorCourseFragment" />
+        <argument
+            android:name="courseName"
+            app:argType="string" />
+        <argument
+            android:name="homeworkName"
+            app:argType="string" />
     </fragment>
 </navigation>

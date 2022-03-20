@@ -66,6 +66,7 @@ public class Student extends User {
     @Override
     public void addCourse(Course course) {
         super.addCourse(course);
+        course.addStudent(this);
     }
 
     @Override

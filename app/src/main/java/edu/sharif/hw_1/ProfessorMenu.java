@@ -31,7 +31,6 @@ public class ProfessorMenu extends Fragment implements RecyclerViewAdapter.Selec
     RecyclerView createdCoursesRecyclerView;
 
 
-
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -109,21 +108,27 @@ public class ProfessorMenu extends Fragment implements RecyclerViewAdapter.Selec
         enterCourseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int courseId = Integer.parseInt(courseIdEditText.getText().toString());
-                String courseName = Controller.getCourseNameById(courseId);
-                if (courseName != null) {
-                    if (Controller.isCourseJoinedByOnlineUser(courseName)) {
-                        NavHostFragment.findNavController(ProfessorMenu.this)
-                                .navigate(ProfessorMenuDirections
-                                        .actionProfessorMenuToProfessorCourseFragment((courseName)));
+                if (!courseIdEditText.getText().toString().equals("")) {
+                    int courseId = Integer.parseInt(courseIdEditText.getText().toString());
+                    String courseName = Controller.getCourseNameById(courseId);
+                    if (courseName != null) {
+                        if (Controller.isCourseJoinedByOnlineUser(courseName)) {
+                            NavHostFragment.findNavController(ProfessorMenu.this)
+                                    .navigate(ProfessorMenuDirections
+                                            .actionProfessorMenuToProfessorCourseFragment((courseName)));
+                        } else {
+                            Toast toast = Toast.makeText(getContext(),
+                                    "You don't have this course!", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
                     } else {
                         Toast toast = Toast.makeText(getContext(),
-                                "You don't have this course!", Toast.LENGTH_LONG);
+                                "Course with this id doesn't exist!", Toast.LENGTH_LONG);
                         toast.show();
                     }
                 } else {
                     Toast toast = Toast.makeText(getContext(),
-                            "Course with this id doesn't exist!", Toast.LENGTH_LONG);
+                            "Enter valid Id!", Toast.LENGTH_LONG);
                     toast.show();
                 }
             }
