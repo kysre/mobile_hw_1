@@ -68,9 +68,18 @@ public class login extends Fragment {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                NavHostFragment.findNavController(login.this).
-                        navigate(R.id.action_login_to_studentMenu);
+                if(Controller.loginErrorHandler(username.getText().toString(),password.getText().toString())) {
+                    if(Controller.checkForLogin(username.getText().toString())) {
+                        NavHostFragment.findNavController(login.this).
+                                navigate(R.id.action_login_to_studentMenu);
+                    }else{
+                        NavHostFragment.findNavController(login.this).
+                                navigate(R.id.action_login_to_professorMenu);
+                    }
+                }else{
+                    Toast toast=Toast.makeText(getContext(),"username or password is not valid",Toast.LENGTH_SHORT);
+                    toast.show();
+                }
 
 
             }
