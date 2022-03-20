@@ -52,6 +52,7 @@ public class Student extends User {
                 return false;
             }
         }
+        this.addCourse(courseToJoin);
         return true;
     }
 

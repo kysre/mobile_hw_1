@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -56,6 +57,7 @@ public class ProfessorHomeworkFragment extends Fragment implements RecyclerViewA
         homeworkNameTextView.setText(homeworkName);
         questionTextView.setText(Controller.getHomeworkQuestion(courseName, homeworkName));
 
+        studentMarksRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         listItems = new ArrayList<>();
         listItems.addAll(Controller.getStudentMarksItemList(courseName, homeworkName));
         adapter = new RecyclerViewAdapter(getActivity(), listItems, this);
