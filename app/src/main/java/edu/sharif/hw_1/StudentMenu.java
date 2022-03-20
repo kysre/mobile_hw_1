@@ -58,7 +58,6 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                // TODO: fix RecyclerView update
                 if (isChecked) {
                     enterButton.setText("Join");
                     listItems.clear();
