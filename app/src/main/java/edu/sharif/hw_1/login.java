@@ -75,7 +75,9 @@ public class login extends Fragment {
                     }else{
                         NavHostFragment.findNavController(login.this).
                                 navigate(R.id.action_login_to_professorMenu);
+
                     }
+                    Controller.setOnlineUser(username.getText().toString());
                 }else{
                     Toast toast=Toast.makeText(getContext(),"username or password is not valid",Toast.LENGTH_SHORT);
                     toast.show();

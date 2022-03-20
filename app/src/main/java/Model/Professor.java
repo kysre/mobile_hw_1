@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Professor extends User {
     private static ArrayList<Professor> allProfessor = new ArrayList<>();
     private String universityName;
+    private ArrayList<Course> createdCourse = new ArrayList<>();
 
 
 
@@ -77,6 +78,7 @@ public class Professor extends User {
     @Override
     public void addCourse(Course course) {
         super.addCourse(course);
+        createdCourse.add(course);
     }
 
 
@@ -108,6 +110,8 @@ public class Professor extends User {
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
+
+
 
 
 }

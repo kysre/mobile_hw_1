@@ -127,4 +127,13 @@ public class Controller {
         }
         return false;
     }
+
+    public static void createNewCourse(String courseName , Professor professor){
+        Course course = new Course(courseName,professor);
+        professor.addCourse(course);
+    }
+
+    public static void setOnlineUser(String username){
+        User.onlineUser=User.getUserByUsername(username);
+    }
 }

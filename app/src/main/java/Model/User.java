@@ -10,6 +10,7 @@ public class User {
     private String username;
     private String password;
     private final ArrayList<Course> courses;
+    public static User onlineUser;
 
     public User(String firstname, String lastname, String username, String password) {
         this.firstname = firstname;
