@@ -45,6 +45,19 @@ public class Course {
         return courses;
     }
 
+    public boolean doesHomeworkExist(String name) {
+        for (Homework homework : homeworks) {
+            if (homework.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addHomework(String name, String question) {
+        homeworks.add(new Homework(name, question, this));
+    }
+
     public int getId() {
         return id;
     }
@@ -71,12 +84,7 @@ public class Course {
         return null;
     }
 
-    public void homework(Homework homework) {
-        this.homeworks.add(homework);
-    }
-
     public static void setCourses(ArrayList<Course> courses) {
-
         Course.courses = courses;
     }
 

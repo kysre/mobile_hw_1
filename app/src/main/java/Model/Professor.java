@@ -7,8 +7,6 @@ import java.util.ArrayList;
 public class Professor extends User {
     private static ArrayList<Professor> allProfessor = new ArrayList<>();
     private String universityName;
-    private ArrayList<Course> createdCourse = new ArrayList<>();
-
 
 
     public Professor(String name, String family, String userName, String password
@@ -18,9 +16,9 @@ public class Professor extends User {
         allProfessor.add(this);
     }
 
-    public static boolean isThereProfessor(String username){
-        for(int i=0;i<allProfessor.size();i++){
-            if(allProfessor.get(i).getUsername().equals(username)){
+    public static boolean isThereProfessor(String username) {
+        for (int i = 0; i < allProfessor.size(); i++) {
+            if (allProfessor.get(i).getUsername().equals(username)) {
                 return true;
             }
         }
@@ -83,14 +81,6 @@ public class Professor extends User {
         Professor.allProfessor = allProfessor;
     }
 
-
-    @Override
-    public void addCourse(Course course) {
-        super.addCourse(course);
-        createdCourse.add(course);
-    }
-
-
     @Override
     public void setFirstname(String firstname) {
         super.setFirstname(firstname);
@@ -119,8 +109,6 @@ public class Professor extends User {
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
-
-
 
 
 }

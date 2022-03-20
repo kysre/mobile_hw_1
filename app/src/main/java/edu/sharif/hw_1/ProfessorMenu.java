@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -76,13 +77,32 @@ public class ProfessorMenu extends Fragment implements RecyclerViewAdapter.Selec
         enterCourseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: go to prof course page
+                int courseId = Integer.parseInt(courseIdEditText.getText().toString());
+                String courseName = Controller.getCourseNameById(courseId);
+                if (courseName != null) {
+                    if (Controller.isCourseJoinedByOnlineUser(courseName)) {
+                        NavHostFragment.findNavController(ProfessorMenu.this)
+                                .navigate(ProfessorMenuDirections
+                                        .actionProfessorMenuToProfessorCourseFragment((courseName)));
+                    } else {
+                        Toast toast = Toast.makeText(getContext(),
+                                "You don't have this course!", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                } else {
+                    Toast toast = Toast.makeText(getContext(),
+                            "Course with this id doesn't exist!", Toast.LENGTH_LONG);
+                    toast.show();
+                }
             }
         });
     }
 
     @Override
     public void onItemClicked(RecyclerViewAdapter.ListItem listItem) {
-        // TODO: go to prof course page
+        String courseName = listItem.getLeftString();
+        NavHostFragment.findNavController(ProfessorMenu.this)
+                .navigate(ProfessorMenuDirections
+                        .actionProfessorMenuToProfessorCourseFragment((courseName)));
     }
 }

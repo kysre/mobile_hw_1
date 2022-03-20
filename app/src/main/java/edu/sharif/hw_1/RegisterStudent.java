@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,8 +74,6 @@ public class RegisterStudent extends Fragment {
 
 
         registerButton.setOnClickListener(new View.OnClickListener() {
-
-
             @Override
             public void onClick(View view) {
                 if (Controller.checkUsernameForRegister(username.getText().toString())) {
@@ -86,6 +85,8 @@ public class RegisterStudent extends Fragment {
                         Toast toast = Toast.makeText(getContext(), "register account was " +
                                 "successfully", Toast.LENGTH_SHORT);
                         toast.show();
+                        NavHostFragment.findNavController(RegisterStudent.this)
+                                .navigate(R.id.action_registerStudent_to_login);
                     } else {
                         Toast toast = Toast.makeText(getContext(), "student number should contains only" +
                                 "numbers", Toast.LENGTH_SHORT);
