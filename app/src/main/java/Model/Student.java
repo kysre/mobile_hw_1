@@ -81,35 +81,4 @@ public class Student extends User {
         Student.students = students;
     }
 
-
-    @Override
-    public void setFirstname(String firstname) {
-        super.setFirstname(firstname);
-    }
-
-
-    @Override
-    public void setLastname(String lastname) {
-        super.setLastname(lastname);
-    }
-
-
-    @Override
-    public void setPassword(String password) {
-        super.setPassword(password);
-    }
-
-
-    @Override
-    public boolean checkPassword(String password) {
-        return super.checkPassword(password);
-    }
-
-
-    @Override
-    public void setUsername(String username) {
-        super.setUsername(username);
-    }
-
-
 }

@@ -80,29 +80,6 @@ public class Professor extends User {
     }
 
 
-    @Override
-    public void setFirstname(String firstname) {
-        super.setFirstname(firstname);
-    }
-
-    @Override
-    public void setLastname(String lastname) {
-        super.setLastname(lastname);
-    }
-
-
-    @Override
-    public void setPassword(String password) {
-        super.setPassword(password);
-    }
-
-
-    @Override
-    public void setUsername(String username) {
-        super.setUsername(username);
-    }
-
-
     @NonNull
     @Override
     protected Object clone() throws CloneNotSupportedException {
