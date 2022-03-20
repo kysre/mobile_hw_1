@@ -81,6 +81,7 @@ public class Professor extends User {
         Professor.allProfessor = allProfessor;
     }
 
+
     @Override
     public void setFirstname(String firstname) {
         super.setFirstname(firstname);
@@ -101,6 +102,7 @@ public class Professor extends User {
     @Override
     public void setUsername(String username) {
         super.setUsername(username);
+
     }
 
 

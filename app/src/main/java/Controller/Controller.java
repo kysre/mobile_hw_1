@@ -69,10 +69,7 @@ public class Controller {
     public static boolean isNumeric(String string) {
         int intValue;
 
-        System.out.println(String.format("Parsing string: \"%s\"", string));
-
         if (string == null || string.equals("")) {
-            System.out.println("String cannot be parsed, it is null or empty.");
             return false;
         }
 
@@ -80,12 +77,17 @@ public class Controller {
             intValue = Integer.parseInt(string);
             return true;
         } catch (NumberFormatException e) {
-            System.out.println("Input String cannot be parsed to Integer.");
+
         }
         return false;
+
+
+
+
     }
 
     public static boolean joinCourse(int courseId) {
+
         if (onlineUser instanceof Student) {
             return ((Student) onlineUser).joinCourse(courseId);
         }
@@ -167,4 +169,5 @@ public class Controller {
         }
         return false;
     }
+
 }

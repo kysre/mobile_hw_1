@@ -88,8 +88,10 @@ public class Course {
         Course.courses = courses;
     }
 
+
     public void setHomeWorks(ArrayList<Homework> homeworks) {
         this.homeworks = homeworks;
+
     }
 
     public void setId(int id) {
@@ -100,5 +102,6 @@ public class Course {
     
 }
 
-   
 
+    }
+}

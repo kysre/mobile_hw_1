@@ -76,6 +76,7 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onClick(View view) {
+
                 boolean isEnter = enterButton.getText().toString().equals("Enter");
                 int courseId = Integer.parseInt(classIdTextView.getText().toString());
                 if (isEnter) {
