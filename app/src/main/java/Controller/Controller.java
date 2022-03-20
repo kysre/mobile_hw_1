@@ -42,7 +42,7 @@ public class Controller {
     }
 
     public static boolean checkForLogin(String username) {
-        return Professor.getUserByUsername(username) == null;
+        return Professor.isThereProfessor(username);
     }
 
     public static ArrayList<RecyclerViewAdapter.ListItem> getCourseListItems() {
