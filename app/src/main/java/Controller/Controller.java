@@ -94,7 +94,7 @@ public class Controller {
 
     public static String getCourseProfessorName(String courseName) {
         Professor professor = Course.getCourseByName(courseName).getProfessor();
-        return professor.getFirstname() + professor.getLastname();
+        return professor.getFirstname() + " " + professor.getLastname();
     }
 
     public static String getCourseNameById(int courseId) {
@@ -155,6 +155,15 @@ public class Controller {
                 professor.addCourse(course);
                 return true;
             }
+        }
+        return false;
+    }
+
+    public static boolean createHomeworkForCourse(String courseName, String name, String question) {
+        Course course = Course.getCourseByName(courseName);
+        if (course != null && !course.doesHomeworkExist(name)) {
+            course.addHomework(name, question);
+            return true;
         }
         return false;
     }
