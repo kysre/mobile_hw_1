@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 public class User {
     private static final HashMap<String, User> userHashmap = new HashMap<>();
+    public static ArrayList<User> users = new ArrayList<>();
     private String firstname;
     private String lastname;
     private String username;
@@ -18,6 +19,7 @@ public class User {
         this.password = password;
         this.courses = new ArrayList<>();
         userHashmap.put(username, this);
+        users.add(this);
     }
 
     public static User getUserByUsername(String username) {
@@ -93,5 +95,14 @@ public class User {
         return userHashmap;
     }
 
+
+    public static ArrayList<User> getUsers() {
+        return users;
+    }
+
+
+    public static void setUsers(ArrayList<User> users) {
+        User.users = users;
+    }
 
 }

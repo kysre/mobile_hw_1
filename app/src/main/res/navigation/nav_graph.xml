@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerProfessor"
-        android:name="edu.sharif.hw_1.registerProfessor"
+        android:name="edu.sharif.hw_1.RegisterProfessor"
         android:label="fragment_registerprofessor"
         tools:layout="@layout/fragment_registerprofessor" >
         <action

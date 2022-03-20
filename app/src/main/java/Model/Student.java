@@ -1,8 +1,20 @@
 package Model;
 
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.content.SharedPreferences;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.gilecode.yagson.YaGson;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
-public class Student extends User {
+public class Student extends User{
     private static ArrayList<Student> students = new ArrayList<>();
     private String studentId;
 
@@ -11,6 +23,28 @@ public class Student extends User {
         super(name, family, userName, password);
         this.studentId = studentId;
         students.add(this);
+
+//        String filePath = "";
+//        filePath += userName;
+//        filePath += ".json";
+//
+//        YaGson yaGson = new YaGson();
+//        String data = yaGson.toJson(this);
+//
+//
+//        Context context = null;
+//        try {
+//            FileOutputStream F = context.openFileOutput(userName,0);
+//            F.write(data.getBytes());
+//            F.close();
+//        }
+//        catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        System.out.println("bayad save shode bashe");
+
+
     }
 
     @Override

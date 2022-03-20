@@ -1,11 +1,14 @@
 package edu.sharif.hw_1;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +16,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.gilecode.yagson.YaGson;
+
+import java.util.ArrayList;
+
 import Controller.Controller;
+import Model.Professor;
+import Model.User;
 
 
-public class registerProfessor extends Fragment {
+public class RegisterProfessor extends Fragment {
+
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,14 +39,14 @@ public class registerProfessor extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public registerProfessor() {
+    public RegisterProfessor() {
         // Required empty public constructor
     }
 
 
     // TODO: Rename and change types and number of parameters
-    public static registerProfessor newInstance(String param1, String param2) {
-        registerProfessor fragment = new registerProfessor();
+    public static RegisterProfessor newInstance(String param1, String param2) {
+        RegisterProfessor fragment = new RegisterProfessor();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -49,6 +61,8 @@ public class registerProfessor extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
@@ -73,11 +87,18 @@ public class registerProfessor extends Fragment {
             @Override
             public void onClick(View view) {
                 if(Controller.checkUsernameForRegister(username.getText().toString())) {
-                    Controller.addProfessor(firstName.getText().toString(), lastName.getText().toString(),
+                    ArrayList<User> professors = Controller.addProfessor(firstName.getText().toString(), lastName.getText().toString(),
                             university.getText().toString(), username.getText().toString()
                             , password.getText().toString());
+                    YaGson yaGson = new YaGson();
+                    String data = yaGson.toJson(professors);
                     Toast toast=Toast.makeText(getContext(),"register was successfully",
                             Toast.LENGTH_SHORT);
+                    sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+                    editor = sp.edit();
+                    editor.putString("users", data);
+                    editor.commit();
+
                     toast.show();
                 }else{
                     Toast toast=Toast.makeText(getContext(),"this username is already exist",
@@ -88,4 +109,5 @@ public class registerProfessor extends Fragment {
         });
 
     }
+
 }

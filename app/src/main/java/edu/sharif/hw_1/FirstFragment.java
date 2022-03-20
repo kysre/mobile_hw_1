@@ -1,6 +1,8 @@
 package edu.sharif.hw_1;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +15,27 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.gilecode.yagson.YaGson;
+import com.gilecode.yagson.com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
+import Model.User;
 import edu.sharif.hw_1.databinding.FragmentFirstBinding;
 
 public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
 
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
+
+
     ) {
 
         binding = FragmentFirstBinding.inflate(inflater, container, false);
@@ -30,10 +43,41 @@ public class FirstFragment extends Fragment {
 
     }
 
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Button loginButton = view.findViewById(R.id.loginButton);
         Switch isProfessor = view.findViewById(R.id.isProfessor);
+
+        sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+
+        editor = sp.edit();
+        //editor.clear();
+
+        editor.commit();
+        System.out.println("here");
+        System.out.println(sp.getString("users", ""));
+        System.out.println(sp.getAll());
+
+        YaGson yaGson = new YaGson();
+        String data = sp.getString("users", "");
+        Type type = new TypeToken<ArrayList<User>>() {
+
+        }.getType();
+
+        ArrayList<User> users = yaGson.fromJson(data, type);
+
+         System.out.println("array");
+
+         System.out.println(users);
+         for (User user : users) {
+             System.out.println(user.toString());
+             System.out.println(user.getFirstname());
+             System.out.println(user.getLastname());
+             System.out.println(user.getUsername());
+         }
+
+         User.setUsers(users);
+
 
         binding.RegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override

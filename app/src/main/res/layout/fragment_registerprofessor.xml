@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#08FF00"
     android:backgroundTint="#FF0000"
-    tools:context=".registerProfessor">
+    tools:context=".RegisterProfessor">
 
     <!-- TODO: Update blank fragment layout -->
 
