@@ -67,16 +67,19 @@ public class FirstFragment extends Fragment {
 
         ArrayList<User> users = yaGson.fromJson(data, type);
 
+
          System.out.println("array");
 
          System.out.println(users);
          for (User user : users) {
              System.out.println("--------------------------------------------------------");
              System.out.println("" + user.toString());
+
              System.out.println("firstname : " + user.getFirstname());
              System.out.println("lastname : " + user.getLastname());
              System.out.println("username : " + user.getUsername());
              System.out.println("password : " + user.getPassword());
+
              System.out.println("--------------------------------------------------------");
          }
 

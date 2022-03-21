@@ -271,7 +271,7 @@ public class Controller extends Activity {
         for (User user : users) {
 
             if (user instanceof Professor) {
-                System.out.println(user.getClass().toString());
+                //System.out.println(user.getClass().toString());
                 new Professor(user.getFirstname(), user.getLastname(),
                         user.getUsername(), user.getPassword(),
                         ((Professor) user).getUniversityName());
@@ -284,4 +284,6 @@ public class Controller extends Activity {
 
         }
     }
+
+
 }
