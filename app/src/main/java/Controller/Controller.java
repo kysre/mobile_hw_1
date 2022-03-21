@@ -19,7 +19,7 @@ import Model.Student;
 import Model.User;
 import edu.sharif.hw_1.RecyclerViewAdapter;
 
-public class Controller {
+public class Controller extends Activity {
 
     private static User onlineUser;
 
