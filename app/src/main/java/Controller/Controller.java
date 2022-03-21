@@ -85,7 +85,7 @@ public class Controller extends Activity {
     }
 
     public static boolean checkForLogin(String username) {
-        return Professor.getUserByUsername(username) == null;
+        return Professor.isThereProfessor(username);
     }
 
     public static ArrayList<RecyclerViewAdapter.ListItem> getCourseListItems() {
@@ -128,13 +128,11 @@ public class Controller extends Activity {
     }
 
     public static boolean joinCourse(int courseId) {
-
         if (onlineUser instanceof Student) {
             return ((Student) onlineUser).joinCourse(courseId);
         }
         return false;
     }
-
 
     public static String getCourseProfessorName(String courseName) {
         Professor professor = Course.getCourseByName(courseName).getProfessor();
@@ -267,7 +265,3 @@ public class Controller extends Activity {
         homework.setStudentMark(student, mark);
     }
 }
-
-
-
-
