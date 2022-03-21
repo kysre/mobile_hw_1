@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerStudent"
-        android:name="edu.sharif.hw_1.registerStudent"
+        android:name="edu.sharif.hw_1.RegisterStudent"
         android:label="fragment_register_student"
         tools:layout="@layout/fragment_register_student" />
     <fragment

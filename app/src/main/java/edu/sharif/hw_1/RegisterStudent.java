@@ -23,7 +23,7 @@ import Controller.Controller;
 import Model.User;
 
 
-public class registerStudent extends Fragment {
+public class RegisterStudent extends Fragment {
 
 
     private SharedPreferences sp;
@@ -39,14 +39,14 @@ public class registerStudent extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public registerStudent() {
+    public RegisterStudent() {
         // Required empty public constructor
     }
 
 
-    public static registerStudent newInstance(String param1, String param2) {
+    public static RegisterStudent newInstance(String param1, String param2) {
 
-        registerStudent fragment = new registerStudent();
+        RegisterStudent fragment = new RegisterStudent();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
