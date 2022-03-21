@@ -25,13 +25,13 @@ public class Controller extends Activity {
     private static User onlineUser;
 
     public static ArrayList<User> addProfessor(String firstName, String lastName,
-                                    String university, String username, String password) {
+                                               String university, String username, String password) {
         Professor professor = new Professor(firstName, lastName, username, password, university);
         System.out.println("00000");
         Controller controller = new Controller();
         ArrayList<User> users = User.getUsers();
         return users;
-      //  controller.saveProfessor(firstName, lastName, university, username, password);
+        //  controller.saveProfessor(firstName, lastName, university, username, password);
 
     }
 
@@ -60,7 +60,7 @@ public class Controller extends Activity {
     }
 
     public static ArrayList<User> addStudent(String firstName, String lastName, String studentId,
-                                  String username, String password) {
+                                             String username, String password) {
         new Student(firstName, lastName, username, password, studentId);
 
         ArrayList<User> users = User.getUsers();
@@ -131,6 +131,13 @@ public class Controller extends Activity {
     public static boolean joinCourse(int courseId) {
         if (onlineUser instanceof Student) {
             return ((Student) onlineUser).joinCourse(courseId);
+        }
+        return false;
+    }
+
+    public static boolean joinCourse(String courseName) {
+        if (onlineUser instanceof Student) {
+            return ((Student) onlineUser).joinCourse(courseName);
         }
         return false;
     }
@@ -251,6 +258,18 @@ public class Controller extends Activity {
         } else {
             return null;
         }
+    }
+
+    public static String getOnlineStudentMark(String courseName, String homeworkName) {
+        if (onlineUser instanceof Student) {
+            Homework homework = Course.getCourseByName(courseName).getHomeworkByName(homeworkName);
+            Student student = (Student) onlineUser;
+            HashMap<Student, Float> studentMarks = homework.getStudentMarks();
+            if (studentMarks.containsKey(student)) {
+                return String.valueOf(studentMarks.get(student));
+            }
+        }
+        return null;
     }
 
     public static String getStudentAnswer(String courseName, String homeworkName, String studentUsername) {
