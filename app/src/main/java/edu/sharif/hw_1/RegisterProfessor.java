@@ -1,12 +1,14 @@
 package edu.sharif.hw_1;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +16,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.gilecode.yagson.YaGson;
+
+import java.util.ArrayList;
+
 import Controller.Controller;
+import Model.Professor;
+import Model.User;
 
 
 public class RegisterProfessor extends Fragment {
+
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,13 +61,15 @@ public class RegisterProfessor extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register_professor, container, false);
+        return inflater.inflate(R.layout.fragment_registerprofessor, container, false);
     }
 
     @Override
@@ -74,12 +87,20 @@ public class RegisterProfessor extends Fragment {
             @Override
             public void onClick(View view) {
                 if(Controller.checkUsernameForRegister(username.getText().toString())) {
-                    Controller.addProfessor(firstName.getText().toString(), lastName.getText().toString(),
+                    ArrayList<User> professors = Controller.addProfessor(firstName.getText().toString(), lastName.getText().toString(),
                             university.getText().toString(), username.getText().toString()
                             , password.getText().toString());
+                    YaGson yaGson = new YaGson();
+                    String data = yaGson.toJson(professors);
                     Toast toast=Toast.makeText(getContext(),"register was successfully",
                             Toast.LENGTH_SHORT);
+                    sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+                    editor = sp.edit();
+                    editor.putString("users", data);
+                    editor.commit();
+
                     toast.show();
+                    
                     NavHostFragment.findNavController(RegisterProfessor.this)
                             .navigate(R.id.action_registerProfessor_to_login);
                 }else{
@@ -91,4 +112,5 @@ public class RegisterProfessor extends Fragment {
         });
 
     }
+
 }
