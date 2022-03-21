@@ -108,6 +108,9 @@ public class RegisterStudent extends Fragment {
                         editor.commit();
 
                         toast.show();
+                        
+                        NavHostFragment.findNavController(RegisterStudent.this)
+                                .navigate(R.id.action_registerStudent_to_login);
                     } else {
                         Toast toast = Toast.makeText(getContext(), "student number should contains only" +
                                 "numbers", Toast.LENGTH_SHORT);
