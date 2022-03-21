@@ -3,6 +3,7 @@ package Controller;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.ColorSpace;
 import android.preference.PreferenceManager;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -263,5 +264,24 @@ public class Controller extends Activity {
         Homework homework = Course.getCourseByName(courseName).getHomeworkByName(homeworkName);
         Student student = (Student) Student.getUserByUsername(studentUsername);
         homework.setStudentMark(student, mark);
+    }
+
+    public static void initializer(ArrayList<User> users) {
+
+        for (User user : users) {
+
+            if (user instanceof Professor) {
+                System.out.println(user.getClass().toString());
+                new Professor(user.getFirstname(), user.getLastname(),
+                        user.getUsername(), user.getPassword(),
+                        ((Professor) user).getUniversityName());
+
+            } else {
+                new Student(user.getFirstname(), user.getLastname(),
+                        user.getUsername(), user.getPassword(),
+                        ((Student) user).getStudentId());
+            }
+
+        }
     }
 }

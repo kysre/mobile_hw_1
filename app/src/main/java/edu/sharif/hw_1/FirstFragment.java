@@ -21,6 +21,7 @@ import com.gilecode.yagson.com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+import Controller.Controller;
 import Model.User;
 import edu.sharif.hw_1.databinding.FragmentFirstBinding;
 
@@ -70,13 +71,19 @@ public class FirstFragment extends Fragment {
 
          System.out.println(users);
          for (User user : users) {
-             System.out.println(user.toString());
-             System.out.println(user.getFirstname());
-             System.out.println(user.getLastname());
-             System.out.println(user.getUsername());
+             System.out.println("--------------------------------------------------------");
+             System.out.println("" + user.toString());
+             System.out.println("firstname : " + user.getFirstname());
+             System.out.println("lastname : " + user.getLastname());
+             System.out.println("username : " + user.getUsername());
+             System.out.println("password : " + user.getPassword());
+             System.out.println("--------------------------------------------------------");
          }
 
-         User.setUsers(users);
+         //User.setUsers(users);
+
+
+         Controller.initializer(users);
 
 
         binding.RegisterButton.setOnClickListener(new View.OnClickListener() {

@@ -20,31 +20,10 @@ public class Student extends User{
     private String studentId;
 
 
-    public Student(String name, String family, String userName, String password, String studentId) {
-        super(name, family, userName, password);
+    public Student(String firstname, String lastname, String username, String password, String studentId) {
+        super(firstname, lastname, username, password);
         this.studentId = studentId;
         students.add(this);
-
-//        String filePath = "";
-//        filePath += userName;
-//        filePath += ".json";
-//
-//        YaGson yaGson = new YaGson();
-//        String data = yaGson.toJson(this);
-//
-//
-//        Context context = null;
-//        try {
-//            FileOutputStream F = context.openFileOutput(userName,0);
-//            F.write(data.getBytes());
-//            F.close();
-//        }
-//        catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        System.out.println("bayad save shode bashe");
-
 
     }
 
