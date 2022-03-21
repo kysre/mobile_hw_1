@@ -1,12 +1,13 @@
 package edu.sharif.hw_1;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +15,20 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gilecode.yagson.YaGson;
+
+import java.util.ArrayList;
+
 import Controller.Controller;
+import Model.User;
 
 
 public class RegisterStudent extends Fragment {
+
+
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -74,17 +85,30 @@ public class RegisterStudent extends Fragment {
 
 
         registerButton.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
                 if (Controller.checkUsernameForRegister(username.getText().toString())) {
                     if (Controller.isNumeric(studentId.getText().toString())) {
-                        Controller.addStudent(firstname.getText().toString(), lastname.getText().
+                        ArrayList<User> users = Controller.addStudent(firstname.getText().toString(), lastname.getText().
                                         toString(),
                                 studentId.getText().toString(), username.getText().toString(),
                                 password.getText().toString());
+
+                        YaGson yaGson = new YaGson();
+                        String data = yaGson.toJson(users);
+
                         Toast toast = Toast.makeText(getContext(), "register account was " +
                                 "successfully", Toast.LENGTH_SHORT);
+
+                        sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+                        editor = sp.edit();
+                        editor.putString("users", data);
+                        editor.commit();
+
                         toast.show();
+                        
                         NavHostFragment.findNavController(RegisterStudent.this)
                                 .navigate(R.id.action_registerStudent_to_login);
                     } else {
