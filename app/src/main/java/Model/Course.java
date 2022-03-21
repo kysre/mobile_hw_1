@@ -18,9 +18,11 @@ public class Course {
     public Course(String name, Professor professor) {
         this.name = name;
         this.professor = professor;
-        this.id = id;
+        this.id = recentId;
         courses.add(this);
+        recentId += 1;
         homeworks = new ArrayList<>();
+        students = new ArrayList<>();
     }
 
     public static Course getCourseByName(String name) {
