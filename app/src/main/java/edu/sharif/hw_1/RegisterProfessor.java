@@ -100,6 +100,9 @@ public class RegisterProfessor extends Fragment {
                     editor.commit();
 
                     toast.show();
+                    
+                    NavHostFragment.findNavController(RegisterProfessor.this)
+                            .navigate(R.id.action_registerProfessor_to_login);
                 }else{
                     Toast toast=Toast.makeText(getContext(),"this username is already exist",
                             Toast.LENGTH_SHORT);
