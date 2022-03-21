@@ -9,9 +9,9 @@ public class Professor extends User {
     private String universityName;
 
 
-    public Professor(String name, String family, String userName, String password
+    public Professor(String firstname, String lastname, String username, String password
             , String universityName) {
-        super(name, family, userName, password);
+        super(firstname, lastname, username, password);
         this.universityName = universityName;
         allProfessor.add(this);
     }

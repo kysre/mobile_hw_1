@@ -105,4 +105,15 @@ public class User {
         User.users = users;
     }
 
+
+    public static boolean isUsernameUnique(String username) {
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 }

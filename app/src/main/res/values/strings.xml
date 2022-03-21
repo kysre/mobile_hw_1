@@ -17,11 +17,15 @@
 
     <string name="previous">Previous</string>
 
+
     <string name="password">Password</string>
+
 
     <string name="course_name">course name</string>
 
+
     <string name="hello_first_fragment">Hello first fragment</string>
+
 
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
@@ -30,4 +34,18 @@
 
 
     <string name="button">Button</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </resources>
