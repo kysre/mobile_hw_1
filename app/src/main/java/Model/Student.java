@@ -13,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Student extends User{
     private static ArrayList<Student> students = new ArrayList<>();
@@ -85,6 +86,7 @@ public class Student extends User{
                 return false;
             }
         }
+        this.addCourse(courseToJoin);
         return true;
     }
 
@@ -99,6 +101,7 @@ public class Student extends User{
     @Override
     public void addCourse(Course course) {
         super.addCourse(course);
+        course.addStudent(this);
     }
 
     @Override
@@ -113,6 +116,50 @@ public class Student extends User{
 
     public static void setStudents(ArrayList<Student> students) {
         Student.students = students;
+    }
+
+
+
+    @Override
+    public void setFirstname(String firstname) {
+        super.setFirstname(firstname);
+    }
+
+
+    @Override
+    public void setLastname(String lastname) {
+        super.setLastname(lastname);
+    }
+
+
+    @Override
+    public void setPassword(String password) {
+        super.setPassword(password);
+    }
+
+
+    @Override
+    public boolean checkPassword(String password) {
+        return super.checkPassword(password);
+    }
+
+
+    @Override
+    public void setUsername(String username) {
+        super.setUsername(username);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return getUsername().equals(student.getUsername());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(studentId);
     }
 
 }

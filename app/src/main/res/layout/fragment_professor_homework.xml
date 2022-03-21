@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfessorMenu">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ProfessorHomeworkFragment">
 
     <LinearLayout
-        android:id="@+id/professorMenuLinearLayout1"
+        android:id="@+id/professorHomeworkMenuLinearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -17,53 +16,72 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/createCourseEditText"
-            android:layout_width="281dp"
-            android:layout_height="match_parent"
-            android:hint="Course Name" />
-
-        <Button
-            android:id="@+id/createCourseButton"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/profCourseNameInHomeworkTextView"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Create" />
+            android:text="Course Name"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/profHomeworkNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Homework Name"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/professorMenuLinearLayout2"
+        android:id="@+id/professorHomeworkMenuLinearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:background="?attr/selectableItemBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/professorMenuLinearLayout1">
+        app:layout_constraintTop_toBottomOf="@+id/professorHomeworkMenuLinearLayout1">
 
         <EditText
-            android:id="@+id/courseIdEditText"
+            android:id="@+id/renameHomeworkEditText"
             android:layout_width="281dp"
             android:layout_height="match_parent"
-            android:hint="Course Id"
-            android:inputType="number"/>
+            android:hint="New Homework Name" />
 
         <Button
-            android:id="@+id/professorEnterCourseButton"
+            android:id="@+id/renameHomeworkButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Enter" />
+            android:text="Rename" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/profHomeworkQuestionTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Question"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/professorHomeworkMenuLinearLayout2" />
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/professorCourseRecyclerView"
+        android:id="@+id/profStudentMarkRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/professorMenuLinearLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/profHomeworkQuestionTextView" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

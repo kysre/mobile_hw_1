@@ -4,20 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StudentHomeworkFragment">
+    tools:context=".ProfessorMarkingFragment">
 
     <LinearLayout
-        android:id="@+id/studentHomeworkLinearLayout"
+        android:id="@+id/profMarkingLinearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:background="?attr/selectableItemBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="8dp">
 
         <TextView
-            android:id="@+id/profCourseNameInHomeworkTextView"
+            android:id="@+id/profHomeworkNameInMarkingTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -26,7 +27,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/profHomeworkNameTextView"
+            android:id="@+id/profStudentNameTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -37,7 +38,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/profHomeworkQuestionTextView"
+        android:id="@+id/profHomeworkMarkingQuestionTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -46,42 +47,56 @@
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/studentHomeworkLinearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/profMarkingLinearLayout1" />
 
     <TextView
-        android:id="@+id/homeworkAnswerTextView"
+        android:id="@+id/profAnswerMarkingTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="No previous answer"
-        android:textColor="#80000000"
+        android:text="Answer"
+        android:textColor="@color/black"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profHomeworkQuestionTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/profHomeworkMarkingQuestionTextView" />
 
-
-    <EditText
-        android:id="@+id/homeworkAnswerEditText"
-        style="@android:style/Widget.Material.EditText"
+    <TextView
+        android:id="@+id/profStudentMarkTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:ems="10"
-        android:hint="Answer"
-        android:inputType="textPersonName"
+        android:text="Mark"
+        android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeworkAnswerTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/profAnswerMarkingTextView" />
 
-    <Button
-        android:id="@+id/answerSubmitButton"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/profMarkingLinearLayout2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="Submit"
+        android:background="?attr/selectableItemBackground"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/homeworkAnswerEditText" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profStudentMarkTextView">
+
+        <EditText
+            android:id="@+id/newMarkEditText"
+            android:layout_width="281dp"
+            android:layout_height="match_parent"
+            android:hint="New Mark"
+            android:inputType="numberDecimal" />
+
+        <Button
+            android:id="@+id/markButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Mark" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

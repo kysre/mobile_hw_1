@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -48,16 +49,8 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
         courseRecyclerView = view.findViewById(R.id.studentCourseRecyclerView);
         courseRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-//        listItems = Controller.getCourseListItems();
-
         listItems = new ArrayList<>();
-        listItems.add(new RecyclerViewAdapter.ListItem("course-1", "40085"));
-        listItems.add(new RecyclerViewAdapter.ListItem("course-2", "40095"));
-        listItems.add(new RecyclerViewAdapter.ListItem("course-3", "21085"));
-        listItems.add(new RecyclerViewAdapter.ListItem("course-4", "20085"));
-        listItems.add(new RecyclerViewAdapter.ListItem("course-5", "33085"));
-        listItems.add(new RecyclerViewAdapter.ListItem("course-6", "12085"));
-
+        listItems.addAll(Controller.getCourseListItems());
         adapter = new RecyclerViewAdapter(getActivity(), listItems, this);
         courseRecyclerView.setAdapter(adapter);
 
@@ -67,10 +60,12 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
                     enterButton.setText("Join");
-                    listItems = Controller.getNotJoinedCourseListItems();
+                    listItems.clear();
+                    listItems.addAll(Controller.getNotJoinedCourseListItems());
                 } else {
                     enterButton.setText("Enter");
-                    listItems = Controller.getCourseListItems();
+                    listItems.clear();
+                    listItems.addAll(Controller.getCourseListItems());
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -80,35 +75,55 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onClick(View view) {
-
                 boolean isEnter = enterButton.getText().toString().equals("Enter");
-                int courseId = Integer.parseInt(classIdTextView.getText().toString());
-                if (isEnter) {
-                    // TODO: enter class with classId
-                } else {
-
-                    if (Controller.joinCourse(courseId)) {
-                        Toast toast = Toast.makeText(getContext(),
-                                "Course joined Successfully!", Toast.LENGTH_LONG);
-                        toast.show();
-                        listItems = Controller.getNotJoinedCourseListItems();
-                        adapter.notifyDataSetChanged();
+                String courseIdStr = classIdTextView.getText().toString();
+                if (!courseIdStr.equals("")) {
+                    int courseId = Integer.parseInt(courseIdStr);
+                    if (isEnter) {
+                        String courseName = Controller.getCourseNameById(courseId);
+                        if (courseName != null) {
+                            boolean isCourseJoined = Controller.isCourseJoinedByOnlineUser(courseName);
+                            if (isCourseJoined) {
+                                NavHostFragment.findNavController(StudentMenu.this)
+                                        .navigate(StudentMenuDirections
+                                                .actionStudentMenuToCourseFragment(courseName));
+                            } else {
+                                Toast toast = Toast.makeText(getContext(),
+                                        "You haven't joined this course!", Toast.LENGTH_LONG);
+                                toast.show();
+                            }
+                        } else {
+                            Toast toast = Toast.makeText(getContext(),
+                                    "Course Id was wrong!", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
                     } else {
-                        Toast toast = Toast.makeText(getContext(),
-                                "Unable to join course!", Toast.LENGTH_LONG);
-                        toast.show();
+                        if (Controller.joinCourse(courseId)) {
+                            Toast toast = Toast.makeText(getContext(),
+                                    "Course joined Successfully!", Toast.LENGTH_LONG);
+                            toast.show();
+                            listItems.clear();
+                            listItems.addAll(Controller.getNotJoinedCourseListItems());
+                            adapter.notifyDataSetChanged();
+                        } else {
+                            Toast toast = Toast.makeText(getContext(),
+                                    "Unable to join course!", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
                     }
+                } else {
+                    Toast toast = Toast.makeText(getContext(),
+                            "Please enter a valid Id!", Toast.LENGTH_LONG);
+                    toast.show();
                 }
-
             }
-
         });
-
     }
 
     @Override
     public void onItemClicked(RecyclerViewAdapter.ListItem listItem) {
-        // TODO: go to course page or join course after being clicked
-        Toast.makeText(getActivity(), listItem.getLeftString(), Toast.LENGTH_SHORT).show();
+        String courseName = listItem.getLeftString();
+        NavHostFragment.findNavController(StudentMenu.this)
+                .navigate(StudentMenuDirections.actionStudentMenuToCourseFragment(courseName));
     }
 }

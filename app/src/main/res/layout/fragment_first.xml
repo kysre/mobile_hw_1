@@ -8,11 +8,11 @@
 
     <TextView
         android:id="@+id/textview_first"
-        android:layout_width="416dp"
-        android:layout_height="49dp"
+        android:layout_width="380dp"
+        android:layout_height="62dp"
         android:fontFamily="serif-monospace"
         android:text="welcome to Quera"
-        android:textAlignment="textEnd"
+        android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColorHighlight="@color/black"
         android:textColorLink="@color/black"
@@ -27,26 +27,24 @@
         android:id="@+id/RegisterButton"
         android:layout_width="120dp"
         android:layout_height="64dp"
-        android:backgroundTint="@android:color/system_accent1_400"
+        android:layout_margin="8dp"
+        android:backgroundTint="@color/purple_700"
         android:text="Register"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.553" />
+        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="119dp"
         android:layout_height="59dp"
+        android:layout_margin="8dp"
         android:text="Login"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.462" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_first" />
 
     <Switch
         android:id="@+id/isProfessor"
@@ -67,6 +65,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mobile_HW_1"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="696dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.949" />
 </androidx.constraintlayout.widget.ConstraintLayout>
