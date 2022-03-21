@@ -9,8 +9,6 @@
     android:backgroundTint="#FF0000"
     tools:context=".RegisterProfessor">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="0dp"
@@ -29,7 +27,7 @@
         android:layout_height="48dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="first name"
+        android:hint="firstname"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView"
@@ -42,7 +40,7 @@
         android:layout_height="48dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="last name"
+        android:hint="lastname"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
@@ -56,7 +54,7 @@
         android:layout_height="48dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="username"
+        android:hint="username"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
@@ -70,7 +68,7 @@
         android:layout_height="48dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="name of university"
+        android:hint="University name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
