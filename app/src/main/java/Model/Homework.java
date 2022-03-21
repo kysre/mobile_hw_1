@@ -33,12 +33,16 @@ public class Homework {
         return studentAnswers.get(student);
     }
 
-    public void setStudentMarks(HashMap<Student, Float> studentMarks) {
-        this.studentMarks = studentMarks;
+    public void setStudentMark(Student student, float mark) {
+        studentMarks.put(student, mark);
     }
 
     public void setStudentAnswers(HashMap<Student, String> studentAnswers) {
         this.studentAnswers = studentAnswers;
+    }
+
+    public void setStudentAnswer(Student student, String answer) {
+        studentAnswers.put(student, answer);
     }
 
     public void setQuestion(String question) {
@@ -65,6 +69,9 @@ public class Homework {
         return homeworkCourse;
     }
 
+    public void rename(String newName) {
+        this.name = newName;
+    }
 
     @Override
     public String toString() {
@@ -80,6 +87,5 @@ public class Homework {
     public void setHomeworkCourse(Course homeworkCourse) {
         this.homeworkCourse = homeworkCourse;
     }
-
 
 }

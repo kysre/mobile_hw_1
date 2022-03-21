@@ -6,19 +6,21 @@ public class Course {
     private static ArrayList<Course> courses;
     private String name;
     private int id;
+    private static int recentId = 50000;
     private Professor professor;
-    private ArrayList<Homework> homework;
+    private ArrayList<Homework> homeworks;
+    private ArrayList<Student> students;
 
     static {
         courses = new ArrayList<>();
     }
 
-    public Course(String name, Professor professor, int id) {
+    public Course(String name, Professor professor) {
         this.name = name;
         this.professor = professor;
         this.id = id;
         courses.add(this);
-        homework = new ArrayList<>();
+        homeworks = new ArrayList<>();
     }
 
     public static Course getCourseByName(String name) {
@@ -27,7 +29,6 @@ public class Course {
                 return course;
             }
         }
-
         return null;
     }
 
@@ -44,6 +45,19 @@ public class Course {
         return courses;
     }
 
+    public boolean doesHomeworkExist(String name) {
+        for (Homework homework : homeworks) {
+            if (homework.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addHomework(String name, String question) {
+        homeworks.add(new Homework(name, question, this));
+    }
+
     public int getId() {
         return id;
     }
@@ -58,31 +72,38 @@ public class Course {
     }
 
     public ArrayList<Homework> getHomeworks() {
-        return homework;
+        return homeworks;
     }
 
-    public void homework(Homework homework) {
-        this.homework.add(homework);
+    public Homework getHomeworkByName(String homeworkName) {
+        for (Homework homework : homeworks) {
+            if (homework.getName().equals(homeworkName)) {
+                return homework;
+            }
+        }
+        return null;
     }
 
     public static void setCourses(ArrayList<Course> courses) {
-
         Course.courses = courses;
     }
 
-    public void setHomeWorks(ArrayList<Homework> homeWorks) {
 
-        this.homework = homeWorks;
+    public void setHomeWorks(ArrayList<Homework> homeworks) {
+        this.homeworks = homeworks;
+
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public static ArrayList<Course> getCourses() {
-
-        return courses;
-
-
+    public void addStudent(Student student) {
+        students.add(student);
     }
+
+    public ArrayList<Student> getCourseStudents() {
+        return students;
+    }
+
 }
