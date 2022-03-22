@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Student extends User{
+public class Student extends User {
     private static ArrayList<Student> students = new ArrayList<>();
     private String studentId;
 
@@ -69,6 +69,20 @@ public class Student extends User{
         return true;
     }
 
+    public boolean joinCourse(String courseName) {
+        Course courseToJoin = Course.getCourseByName(courseName);
+        if (courseToJoin == null) {
+            return false;
+        }
+        for (Course course : getCourses()) {
+            if (course.getName().equals(courseName)) {
+                return false;
+            }
+        }
+        this.addCourse(courseToJoin);
+        return true;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -96,7 +110,6 @@ public class Student extends User{
     public static void setStudents(ArrayList<Student> students) {
         Student.students = students;
     }
-
 
 
     @Override
