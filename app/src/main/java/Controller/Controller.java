@@ -24,6 +24,8 @@ public class Controller extends Activity {
 
     private static User onlineUser;
 
+
+
     public static ArrayList<User> addProfessor(String firstName, String lastName,
                                                String university, String username, String password) {
         Professor professor = new Professor(firstName, lastName, username, password, university);
@@ -219,11 +221,13 @@ public class Controller extends Activity {
 
     public static ArrayList<RecyclerViewAdapter.ListItem> getStudentMarksItemList
             (String courseName, String homeworkName) {
+
         Course course = Course.getCourseByName(courseName);
         Homework homework = course.getHomeworkByName(homeworkName);
         ArrayList<Student> students = course.getCourseStudents();
         HashMap<Student, Float> studentMarksMap = homework.getStudentMarks();
         ArrayList<RecyclerViewAdapter.ListItem> studentMarksItemList = new ArrayList<>();
+
         for (Student student : students) {
             if (studentMarksMap.containsKey(student)) {
                 studentMarksItemList.add(new RecyclerViewAdapter.ListItem
