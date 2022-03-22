@@ -23,6 +23,7 @@ public class StudentHomeworkFragment extends Fragment {
     TextView homeworkNameTextView;
     TextView questionTextView;
     TextView answerTextView;
+    TextView markTextView;
     EditText answerEditText;
     Button submitButton;
 
@@ -42,6 +43,7 @@ public class StudentHomeworkFragment extends Fragment {
         homeworkNameTextView = view.findViewById(R.id.profHomeworkNameTextView);
         questionTextView = view.findViewById(R.id.profHomeworkQuestionTextView);
         answerTextView = view.findViewById(R.id.homeworkAnswerTextView);
+        markTextView = view.findViewById(R.id.studentHomeworkMarkTextView);
         answerEditText = view.findViewById(R.id.homeworkAnswerEditText);
         submitButton = view.findViewById(R.id.answerSubmitButton);
 
@@ -51,6 +53,13 @@ public class StudentHomeworkFragment extends Fragment {
         homeworkNameTextView.setText(homeworkName);
         questionTextView.setText(Controller.getHomeworkQuestion(courseName, homeworkName));
         answerTextView.setText(Controller.getPreviousAnswer(courseName, homeworkName));
+
+        String mark = Controller.getOnlineStudentMark(courseName, homeworkName);
+        if (mark != null) {
+            markTextView.setText(mark);
+            answerEditText.setFocusable(false);
+            submitButton.setEnabled(false);
+        }
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override

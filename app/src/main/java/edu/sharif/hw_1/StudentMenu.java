@@ -26,6 +26,9 @@ import Controller.Controller;
 public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectListener {
 
     private ArrayList<RecyclerViewAdapter.ListItem> listItems;
+    Button enterButton;
+    RecyclerView courseRecyclerView;
+    RecyclerViewAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,9 +45,7 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
         EditText classIdTextView = view.findViewById(R.id.studentCourseEditText);
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch joinSwitch = view.findViewById(R.id.studentJoinSwitch);
 
-        Button enterButton = view.findViewById(R.id.studentEnterCourseButton);
-        RecyclerView courseRecyclerView;
-        RecyclerViewAdapter adapter;
+        enterButton = view.findViewById(R.id.studentEnterCourseButton);
 
         courseRecyclerView = view.findViewById(R.id.studentCourseRecyclerView);
         courseRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -120,10 +121,27 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
         });
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onItemClicked(RecyclerViewAdapter.ListItem listItem) {
         String courseName = listItem.getLeftString();
-        NavHostFragment.findNavController(StudentMenu.this)
-                .navigate(StudentMenuDirections.actionStudentMenuToCourseFragment(courseName));
+        boolean isEnter = enterButton.getText().toString().equals("Enter");
+        if (isEnter) {
+            NavHostFragment.findNavController(StudentMenu.this)
+                    .navigate(StudentMenuDirections.actionStudentMenuToCourseFragment(courseName));
+        } else {
+            if (Controller.joinCourse(courseName)) {
+                Toast toast = Toast.makeText(getContext(),
+                        "Course joined Successfully!", Toast.LENGTH_LONG);
+                toast.show();
+                listItems.clear();
+                listItems.addAll(Controller.getNotJoinedCourseListItems());
+                adapter.notifyDataSetChanged();
+            } else {
+                Toast toast = Toast.makeText(getContext(),
+                        "Unable to join course!", Toast.LENGTH_LONG);
+                toast.show();
+            }
+        }
     }
 }
