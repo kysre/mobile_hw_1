@@ -30,7 +30,6 @@ public class StudentCourseFragment extends Fragment implements RecyclerViewAdapt
     Button enterHomeworkButton;
     RecyclerView homeworkRecyclerView;
     RecyclerViewAdapter adapter;
-    int s=10;
 
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
