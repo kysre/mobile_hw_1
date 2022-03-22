@@ -141,4 +141,8 @@ public class Student extends User{
         return Objects.hash(studentId);
     }
 
+    public static void addToStudents(Student student) {
+        students.add(student);
+    }
+
 }

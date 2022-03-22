@@ -113,4 +113,9 @@ public class Professor extends User {
     }
 
 
+    public static void addToAllProfessor(Professor professor) {
+        allProfessor.add(professor);
+    }
+
+
 }

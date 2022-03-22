@@ -270,16 +270,21 @@ public class Controller extends Activity {
 
         for (User user : users) {
 
+            User.addToUsers(user);
             if (user instanceof Professor) {
                 //System.out.println(user.getClass().toString());
-                new Professor(user.getFirstname(), user.getLastname(),
-                        user.getUsername(), user.getPassword(),
-                        ((Professor) user).getUniversityName());
+//                new Professor(user.getFirstname(), user.getLastname(),
+//                        user.getUsername(), user.getPassword(),
+//                        ((Professor) user).getUniversityName());
+
+                Professor.addToAllProfessor((Professor) user);
 
             } else {
-                new Student(user.getFirstname(), user.getLastname(),
-                        user.getUsername(), user.getPassword(),
-                        ((Student) user).getStudentId());
+//                new Student(user.getFirstname(), user.getLastname(),
+//                        user.getUsername(), user.getPassword(),
+//                        ((Student) user).getStudentId());
+
+                Student.addToStudents((Student) user);
             }
 
         }
