@@ -28,6 +28,7 @@ import Model.User;
 
 
 public class ProfessorMenu extends Fragment implements RecyclerViewAdapter.SelectListener {
+
     private ArrayList<RecyclerViewAdapter.ListItem> listItems;
     EditText createCourseEditText;
     EditText courseIdEditText;
@@ -154,6 +155,7 @@ public class ProfessorMenu extends Fragment implements RecyclerViewAdapter.Selec
     public void onItemClicked(RecyclerViewAdapter.ListItem listItem) {
         String courseName = listItem.getLeftString();
         NavHostFragment.findNavController(ProfessorMenu.this)
-                .navigate(ProfessorMenuDirections.actionProfessorMenuToProfessorCourseFragment((courseName)));
+                .navigate(ProfessorMenuDirections.
+                        actionProfessorMenuToProfessorCourseFragment((courseName)));
     }
 }

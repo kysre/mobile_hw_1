@@ -112,6 +112,8 @@ public class Course {
     public static void addToCourses(Course course) {
         courses.add(course);
     }
+
+
     
 }
 
