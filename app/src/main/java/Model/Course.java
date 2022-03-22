@@ -107,6 +107,11 @@ public class Course {
     public ArrayList<Student> getCourseStudents() {
         return students;
     }
+
+
+    public static void addToCourses(Course course) {
+        courses.add(course);
+    }
     
 }
 

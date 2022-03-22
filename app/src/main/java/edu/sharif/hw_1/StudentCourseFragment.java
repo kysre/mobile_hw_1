@@ -1,5 +1,6 @@
 package edu.sharif.hw_1;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,9 @@ public class StudentCourseFragment extends Fragment implements RecyclerViewAdapt
     Button enterHomeworkButton;
     RecyclerView homeworkRecyclerView;
     RecyclerViewAdapter adapter;
+
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

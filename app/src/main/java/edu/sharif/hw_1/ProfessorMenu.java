@@ -1,6 +1,7 @@
 package edu.sharif.hw_1;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +19,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.gilecode.yagson.YaGson;
+
 import java.util.ArrayList;
 
 import Controller.Controller;
+import Model.User;
 
 
 public class ProfessorMenu extends Fragment implements RecyclerViewAdapter.SelectListener {
@@ -29,6 +34,9 @@ public class ProfessorMenu extends Fragment implements RecyclerViewAdapter.Selec
     Button createCourseButton;
     Button enterCourseButton;
     RecyclerView createdCoursesRecyclerView;
+
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -97,6 +105,13 @@ public class ProfessorMenu extends Fragment implements RecyclerViewAdapter.Selec
                     listItems.clear();
                     listItems.addAll(Controller.getCourseListItems());
                     adapter.notifyDataSetChanged();
+                    YaGson yaGson = new YaGson();
+                    ArrayList<User> users = User.getUsers();
+                    String data = yaGson.toJson(users);
+                    sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+                    editor = sp.edit();
+                    editor.putString("users", data);
+                    editor.commit();
                 } else {
                     Toast toast = Toast.makeText(getContext(),
                             "Course already exists!", Toast.LENGTH_LONG);
@@ -139,7 +154,6 @@ public class ProfessorMenu extends Fragment implements RecyclerViewAdapter.Selec
     public void onItemClicked(RecyclerViewAdapter.ListItem listItem) {
         String courseName = listItem.getLeftString();
         NavHostFragment.findNavController(ProfessorMenu.this)
-                .navigate(ProfessorMenuDirections
-                        .actionProfessorMenuToProfessorCourseFragment((courseName)));
+                .navigate(ProfessorMenuDirections.actionProfessorMenuToProfessorCourseFragment((courseName)));
     }
 }
