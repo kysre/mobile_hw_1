@@ -1,7 +1,9 @@
 package edu.sharif.hw_1;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +19,12 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gilecode.yagson.YaGson;
+
 import java.util.ArrayList;
 
 import Controller.Controller;
+import Model.User;
 
 public class ProfessorCourseFragment extends Fragment implements RecyclerViewAdapter.SelectListener {
     private ArrayList<RecyclerViewAdapter.ListItem> listItems;
@@ -31,6 +36,9 @@ public class ProfessorCourseFragment extends Fragment implements RecyclerViewAda
     EditText homeworkQuestionEditText;
     Button createHomeworkButton;
     RecyclerView homeworkRecyclerView;
+
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -86,6 +94,14 @@ public class ProfessorCourseFragment extends Fragment implements RecyclerViewAda
                         listItems.clear();
                         listItems.addAll(Controller.getHomeworkListItems(courseName));
                         adapter.notifyDataSetChanged();
+
+                        YaGson yaGson = new YaGson();
+                        ArrayList<User> users = User.getUsers();
+                        String data = yaGson.toJson(users);
+                        sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+                        editor = sp.edit();
+                        editor.putString("users", data);
+                        editor.commit();
                     } else {
                         Toast toast = Toast.makeText(getContext(),
                                 "Homework already exists! Choose a different name.", Toast.LENGTH_LONG);

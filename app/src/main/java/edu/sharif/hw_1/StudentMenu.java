@@ -1,6 +1,7 @@
 package edu.sharif.hw_1;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +21,12 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.gilecode.yagson.YaGson;
+
 import java.util.ArrayList;
 
 import Controller.Controller;
+import Model.User;
 
 public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectListener {
 
@@ -29,6 +34,9 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
     Button enterButton;
     RecyclerView courseRecyclerView;
     RecyclerViewAdapter adapter;
+
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -137,6 +145,16 @@ public class StudentMenu extends Fragment implements RecyclerViewAdapter.SelectL
                 listItems.clear();
                 listItems.addAll(Controller.getNotJoinedCourseListItems());
                 adapter.notifyDataSetChanged();
+
+
+                YaGson yaGson = new YaGson();
+                ArrayList<User> users = User.getUsers();
+                String data = yaGson.toJson(users);
+                sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+                editor = sp.edit();
+                editor.putString("users", data);
+                editor.commit();
+
             } else {
                 Toast toast = Toast.makeText(getContext(),
                         "Unable to join course!", Toast.LENGTH_LONG);

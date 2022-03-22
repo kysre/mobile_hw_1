@@ -83,7 +83,7 @@ public class FirstFragment extends Fragment {
              System.out.println("--------------------------------------------------------");
          }
 
-         User.setUsers(users);
+         //User.setUsers(users);
 
 
          Controller.initializer(users);

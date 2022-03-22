@@ -1,6 +1,8 @@
 package edu.sharif.hw_1;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +18,12 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gilecode.yagson.YaGson;
+
 import java.util.ArrayList;
 
 import Controller.Controller;
+import Model.User;
 
 public class ProfessorHomeworkFragment extends Fragment implements RecyclerViewAdapter.SelectListener {
     private ArrayList<RecyclerViewAdapter.ListItem> listItems;
@@ -31,6 +36,10 @@ public class ProfessorHomeworkFragment extends Fragment implements RecyclerViewA
     Button renameButton;
     RecyclerView studentMarksRecyclerView;
     RecyclerViewAdapter adapter;
+
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,6 +82,15 @@ public class ProfessorHomeworkFragment extends Fragment implements RecyclerViewA
                     Toast toast = Toast.makeText(getContext(),
                             "Course renamed!", Toast.LENGTH_LONG);
                     toast.show();
+
+                    YaGson yaGson = new YaGson();
+                    ArrayList<User> users = User.getUsers();
+                    String data = yaGson.toJson(users);
+                    sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+                    editor = sp.edit();
+                    editor.putString("users", data);
+                    editor.commit();
+
                 } else {
                     Toast toast = Toast.makeText(getContext(),
                             "Course name is unavailable!", Toast.LENGTH_LONG);

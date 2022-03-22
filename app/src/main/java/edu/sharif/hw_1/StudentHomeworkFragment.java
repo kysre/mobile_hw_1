@@ -1,6 +1,8 @@
 package edu.sharif.hw_1;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +16,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.gilecode.yagson.YaGson;
+
+import java.util.ArrayList;
+
 import Controller.Controller;
+import Model.User;
 
 public class StudentHomeworkFragment extends Fragment {
     private String courseName;
@@ -26,6 +33,11 @@ public class StudentHomeworkFragment extends Fragment {
     TextView markTextView;
     EditText answerEditText;
     Button submitButton;
+
+
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,6 +82,14 @@ public class StudentHomeworkFragment extends Fragment {
                     Toast toast = Toast.makeText(getContext(),
                             "Answer submitted successfully!", Toast.LENGTH_LONG);
                     toast.show();
+
+                    YaGson yaGson = new YaGson();
+                    ArrayList<User> users = User.getUsers();
+                    String data = yaGson.toJson(users);
+                    sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+                    editor = sp.edit();
+                    editor.putString("users", data);
+                    editor.commit();
                     NavHostFragment.findNavController(StudentHomeworkFragment.this)
                             .navigate(StudentHomeworkFragmentDirections
                                     .actionStudentHomeworkFragmentToStudentCourseFragment(courseName));
