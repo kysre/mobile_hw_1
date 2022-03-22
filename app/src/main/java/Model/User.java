@@ -116,4 +116,10 @@ public class User {
         return true;
     }
 
+    public static void addToUsers(User user) {
+        users.add(user);
+
+        userHashmap.put(user.getUsername(), user);
+    }
+
 }
