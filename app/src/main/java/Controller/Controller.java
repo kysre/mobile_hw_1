@@ -298,10 +298,10 @@ public class Controller extends Activity {
 
                 Professor.addToAllProfessor((Professor) user);
 
-//                ArrayList<Course> courses = user.getCourses();
-//                for (Course course : courses) {
-//                    Course.addToCourses(course);
-//                }
+                ArrayList<Course> courses = user.getCourses();
+                for (Course course : courses) {
+                    Course.addToCourses(course);
+                }
 
             } else {
 //                new Student(user.getFirstname(), user.getLastname(),

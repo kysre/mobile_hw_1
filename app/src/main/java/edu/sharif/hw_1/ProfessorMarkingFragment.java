@@ -1,6 +1,8 @@
 package edu.sharif.hw_1;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +15,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.gilecode.yagson.YaGson;
+
+import java.util.ArrayList;
+
 import Controller.Controller;
+import Model.User;
 
 public class ProfessorMarkingFragment extends Fragment {
+
     private String courseName;
     private String homeworkName;
     private String studentUsername;
@@ -27,6 +35,10 @@ public class ProfessorMarkingFragment extends Fragment {
     EditText markEditText;
     Button markButton;
 
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -36,6 +48,7 @@ public class ProfessorMarkingFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
         super.onViewCreated(view, savedInstanceState);
 
         homeworkNameTextView = view.findViewById(R.id.profHomeworkNameInMarkingTextView);
@@ -68,6 +81,15 @@ public class ProfessorMarkingFragment extends Fragment {
                     toast.show();
                     markTextView.setText(String.valueOf(newMark));
                     markEditText.setText("");
+
+                    YaGson yaGson = new YaGson();
+                    ArrayList<User> users = User.getUsers();
+                    String data = yaGson.toJson(users);
+                    sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+                    editor = sp.edit();
+                    editor.putString("users", data);
+                    editor.commit();
+
                 } else {
                     Toast toast = Toast.makeText(getContext(),
                             "Please enter a valid mark!", Toast.LENGTH_LONG);

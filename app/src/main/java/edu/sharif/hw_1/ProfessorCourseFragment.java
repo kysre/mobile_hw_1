@@ -27,6 +27,7 @@ import Controller.Controller;
 import Model.User;
 
 public class ProfessorCourseFragment extends Fragment implements RecyclerViewAdapter.SelectListener {
+
     private ArrayList<RecyclerViewAdapter.ListItem> listItems;
     private String courseName;
     private RecyclerViewAdapter adapter;
